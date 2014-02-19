@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h2>Users</h2>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= link_to 'Add new user', 'users/new', :class => 'btn btn-success pull-right' %>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in users">
+      <td>{{user.firstName}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+  </tbody>
+</table>
+

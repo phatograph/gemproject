@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gemproject</title>
+  <title>Gem Project</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-app="app">
 
-<%= yield %>
+  <nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <a class="navbar-brand" href="/">Brand</a>
+
+      <% if user_signed_in? %>
+        <div class="navbar-text navbar-right">
+          <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+        </div>
+        <div class="navbar-text navbar-right">
+          Signed in as <strong><%= current_user.email %></strong>
+        </div>
+      <% end %>
+    </div>
+  </nav>
+
+  <div ng-view class="container"><%= yield %></div>
 
 </body>
 </html>
