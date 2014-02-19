@@ -1,0 +1,7 @@
+<div class="form-group" ng-class="{'has-error': errors.<%= text.underscore %>}">
+  <label for="<%= text %>" class="col-xs-3 control-label"><%= text.titleize.humanize %></label>
+  <div class="col-xs-9">
+    <input id="<%= text %>" type="<%= type %>" class="form-control" ng-class="{'text-danger': true}" ng-model="user.<%= text %>">
+    <span class="help-block" ng-show="errors.<%= text.underscore %>"><%= text.titleize.humanize %> {{errors.<%= text.underscore %>.join(', ')}}</span>
+  </div>
+</div>

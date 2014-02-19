@@ -7,8 +7,8 @@ angular.module('app.controllers').controller 'UserNewCtrl', [
       $scope.user.create()
         .then (user) ->
           $location.path $scope.path 'UserIndexCtrl'
-        .catch ->
-          console.log arguments
+        .catch (err) ->
+          $scope.errors = err.data.errors
 
   ]
 

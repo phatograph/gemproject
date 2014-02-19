@@ -6,6 +6,6 @@ class Api::UsersController < ApplicationController
   protected
 
   def permitted_params
-    params.permit(:user => [:first_name, :email, :password])
+    params.permit(:user => [:first_name, :last_name, :email, :password])
   end
 end
