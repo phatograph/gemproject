@@ -14,6 +14,8 @@ gem 'angularjs-rails'
 gem 'angularjs-rails-resource'
 gem 'high_voltage', '~> 2.1.0'
 gem 'js-routes'
+gem 'pundit'
+gem 'active_model_serializers'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
