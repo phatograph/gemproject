@@ -1,8 +1,10 @@
 angular.module('app.controllers').controller 'UserIndexCtrl', [
-  '$scope', 'users',
-  ($scope, users) ->
+  '$scope', 'users', '$route',
+  ($scope, users, $route) ->
 
     $scope.users = users.data
+    $scope.deleteUser = (user) ->
+      user.delete().then -> $route.reload()
 
   ]
 

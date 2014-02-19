@@ -50,7 +50,8 @@ ActiveRecord::Schema.define(version: 20140219143932) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "position"
-    t.string   "employee_id"
+    t.string   "employee_number"
+    t.string   "department"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

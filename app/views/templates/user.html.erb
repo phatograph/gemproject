@@ -13,12 +13,20 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>Employee Number</th>
+      <th>Position</th>
+      <th>Department</th>
+      <th>#</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="user in users">
       <td>{{user.firstName}}</td>
       <td>{{user.email}}</td>
+      <td>{{user.employeeNumber}}</td>
+      <td>{{user.position}}</td>
+      <td>{{user.department}}</td>
+      <td><a href="#" ng-really-click="deleteUser(user)" class="btn btn-danger btn-xs" >Delete</a></td>
     </tr>
   </tbody>
 </table>

@@ -6,5 +6,12 @@ FactoryGirl.define do
     first_name { Faker::Name.name.split(' ').first }
     last_name { Faker::Name.name.split(' ').last }
     password 'password'
+    position { ['DBA', 'Programmer', 'System Engineer'].sample }
+    sequence(:employee_number) {|n| n }
+    department 'Information Technology Service'
+  end
+
+  factory :user_admin, :parent => :user do
+    email 'phatograph@gmail.com'
   end
 end

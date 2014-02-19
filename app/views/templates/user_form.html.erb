@@ -10,6 +10,9 @@
       <%= render :partial => 'templates/forms/text', :object => 'email', :locals => {:type => 'text'} %>
       <%= render :partial => 'templates/forms/text', :object => 'password', :locals => {:type => 'password'} %>
       <%= render :partial => 'templates/forms/text', :object => 'confirmPassword', :locals => {:type => 'password'} %>
+      <%= render :partial => 'templates/forms/text', :object => 'employeeNumber', :locals => {:type => 'text'} %>
+      <%= render :partial => 'templates/forms/text', :object => 'position', :locals => {:type => 'text'} %>
+      <%= render :partial => 'templates/forms/text', :object => 'department', :locals => {:type => 'text'} %>
       <div class="form-group">
         <div class="col-xs-offset-3 col-xs-9">
           <button ng-click="saveUser()" type="submit" ng-disabled="!user.password || user.password != user.confirmPassword" class="btn btn-success">Submit</button>
