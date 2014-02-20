@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require js-routes
+#= require lodash
 #= require bootstrap
 #= require angular
 #= require angular-route

@@ -1,8 +1,13 @@
 angular.module('app.controllers').controller 'ProjectEditCtrl', [
-  '$scope', 'project', '$location',
-  ($scope, project, $location) ->
+  '$scope', 'project', '$location', 'users',
+  ($scope, project, $location, users) ->
 
     $scope.project = project.data
+    $scope.users = users.data
+
+    projectUsers = [{}, {}]
+    $scope.projectUsers = projectUsers
+
     $scope.saveProject = ->
       $scope.project.save()
         .then (project) ->
@@ -12,6 +17,9 @@ angular.module('app.controllers').controller 'ProjectEditCtrl', [
 
           if err.data._message
             $scope.flash = type: 'danger', message: "#{err.data._message} (#{err.status})"
+
+    $scope.change = ->
+      console.log _.map($scope.projectUsers, (x) -> x.fullName)
   ]
 
 resolvers.ProjectShowResolver =
@@ -26,4 +34,17 @@ resolvers.ProjectShowResolver =
       projectXhr.catch (error) -> deferred.resolve status: 404, data: error.data
       deferred.promise
 
+  ]
+
+  users: [
+    '$q', 'User',
+    ($q, User) ->
+
+      deferred = $q.defer()
+      User.query().then (users) ->
+        deferred.resolve
+          status: 200
+          data: users
+
+      deferred.promise
   ]

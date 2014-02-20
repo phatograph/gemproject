@@ -17,7 +17,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="user in users | orderBy:'fullName'">
+    <tr ng-repeat="user in users | orderBy: 'fullName'">
       <td>{{user.fullName}}</td>
       <td>{{user.email}}</td>
       <td>{{user.employeeNumber}}</td>
@@ -46,7 +46,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="project in projects | orderBy:'name'">
+    <tr ng-repeat="project in projects | orderBy: 'name'">
       <td>{{project.name}}</td>
       <td>
         <a ng-href="{{ path('ProjectEditCtrl', { projectId: project.id }) }}" ng-show="project._updateable" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
