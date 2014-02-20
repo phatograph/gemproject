@@ -1,0 +1,7 @@
+<div ng-show="flash" class="alert alert-{{flash.type}} alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Warning!</strong>
+  <span ng-bind="flash.message"></span>
+</div>
+
+<%= yield %>

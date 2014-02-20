@@ -21,7 +21,10 @@ class Api::UsersController < ApplicationController
 
   # Response 401 error as JSON data.
   def not_authorized
-    render :status => 401, :json => {:_status => 401}
+    render :status => 401, :json => {
+      :_status => 401,
+      :_message => "You are not authorized to perform this action."
+    }
   end
 
   protected

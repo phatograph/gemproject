@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require js-routes
+#= require bootstrap
 #= require angular
 #= require angular-route
 #= require angularjs/rails/resource
@@ -44,6 +45,11 @@ angular.module('app').config [
     $routeProvider.when '/users/new',
       controller: 'UserNewCtrl'
       templateUrl: Routes.template_path('user_form')
+
+    $routeProvider.when '/users/:userId/edit',
+      controller: 'UserEditCtrl'
+      templateUrl: Routes.template_path('user_form')
+      resolve: resolvers.UserShowResolver
 
   ]
 

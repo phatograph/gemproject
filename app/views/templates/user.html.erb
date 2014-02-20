@@ -2,30 +2,31 @@
   <h2>Users</h2>
 </div>
 
-<p ng-show="true || users[0]._createable" class="clearfix">
+<p ng-show="users[0]._createable" class="clearfix">
   <a href="users/new" class="btn btn-success pull-right">Add new user</a>
 </p>
 
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Employee Number</th>
+      <th>Employee No.</th>
       <th>Position</th>
       <th>Department</th>
       <th>#</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="user in users">
+    <tr ng-repeat="user in users | orderBy:'fullName'">
       <td>{{user.fullName}}</td>
       <td>{{user.email}}</td>
       <td>{{user.employeeNumber}}</td>
       <td>{{user.position}}</td>
-      <td>{{user._deletable}}</td>
+      <td>{{user.department}}</td>
       <td>
-        <a href="#" ng-show="true || user._deletable" ng-really-click="deleteUser(user)" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>
+        <a href="users/{{user.id}}/edit" ng-show="user._updateable" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
+        <a href="#" ng-show="user._deleteable" ng-really-click="deleteUser(user)" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>
       </td>
     </tr>
   </tbody>

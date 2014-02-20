@@ -1,3 +1,3 @@
 class TemplatesController < HighVoltage::PagesController
-  layout false
+  layout 'template'
 end

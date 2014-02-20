@@ -10,5 +10,8 @@ angular.module('app.controllers').controller 'UserNewCtrl', [
         .catch (err) ->
           $scope.errors = err.data.errors
 
+          if err.data._message
+            $scope.flash = type: 'danger', message: "#{err.data._message} (#{err.status})"
+
   ]
 

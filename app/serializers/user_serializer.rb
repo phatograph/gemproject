@@ -9,7 +9,8 @@ class UserSerializer < ActiveModel::Serializer
              :department,
              :full_name,
              :_createable,
-             :_deletable
+             :_updateable,
+             :_deleteable
 
   def full_name
     "#{first_name} #{last_name}"
@@ -19,7 +20,11 @@ class UserSerializer < ActiveModel::Serializer
     UserPolicy.new(current_user, User).create?
   end
 
-  def _deletable
+  def _updateable
+    UserPolicy.new(current_user, object).update?
+  end
+
+  def _deleteable
     UserPolicy.new(current_user, object).destroy?
   end
 end
