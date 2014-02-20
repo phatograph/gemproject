@@ -1,7 +1,7 @@
 <div class="form-group" ng-class="{'has-error': errors.<%= text.underscore %>}">
-  <label for="<%= model %><%= text %>" class="col-xs-3 control-label"><%= text.titleize.humanize %></label>
+  <label for="<%= model %>.<%= text %>" class="col-xs-3 control-label"><%= text.titleize.humanize %></label>
   <div class="col-xs-9">
-    <input id="<%= model %><%= text %>" name="<%= model %><%= text %>" type="<%= local_assigns[:type] || 'text' %>" class="form-control" ng-class="{'text-danger': true}" ng-model="<%= model %>.<%= text %>">
+    <input id="<%= model %>.<%= text %>" name="<%= model %>.<%= text %>" type="<%= local_assigns[:type] || 'text' %>" class="form-control" ng-class="{'text-danger': true}" ng-model="<%= model %>.<%= text %>">
     <span class="help-block" ng-show="errors.<%= text.underscore %>"><%= text.titleize.humanize %> {{errors.<%= text.underscore %>.join(', ')}}</span>
   </div>
 </div>

@@ -51,6 +51,15 @@ angular.module('app').config [
       templateUrl: Routes.template_path('user_form')
       resolve: resolvers.UserShowResolver
 
+    $routeProvider.when '/projects/new',
+      controller: 'ProjectNewCtrl'
+      templateUrl: Routes.template_path('project_form')
+
+    $routeProvider.when '/projects/:projectId/edit',
+      controller: 'ProjectEditCtrl'
+      templateUrl: Routes.template_path('project_form')
+      resolve: resolvers.ProjectShowResolver
+
     $routeProvider.otherwise redirectTo: '/'
 
   ]
