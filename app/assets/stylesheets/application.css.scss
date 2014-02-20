@@ -6,9 +6,25 @@
  *= require_tree .
  */
 
-@font-face {
-  font-family: 'Glyphicons Halflings';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Glyphicons Halflings'), local('Glyphicons Halflings'), asset-url('Glyphicons/glyphicons-halflings-regular.woff') format('woff');
+body {
+  background-color: #f8f8f8;
+}
+
+nav.navbar {
+  margin-bottom: 0;
+}
+
+div.bg {
+  background-color: #fff;
+  padding: 20px 0 40px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 0 50px;
+  border-top: 1px solid #e7e7e7;
+
+  p.mixpanel {
+      padding-top: 20px;
+  }
 }
