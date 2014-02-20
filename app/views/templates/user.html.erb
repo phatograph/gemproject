@@ -1,10 +1,9 @@
 <div class="page-header">
-  <h2>Users</h2>
+  <h2>
+    <span>Users</span>
+    <a ng-show="users[0]._createable" ng-href="{{ path('UserNewCtrl') }}" class="btn btn-success pull-right">Add new user</a>
+  </h2>
 </div>
-
-<p ng-show="users[0]._createable" class="clearfix">
-  <a href="users/new" class="btn btn-success pull-right">Add new user</a>
-</p>
 
 <table class="table table-striped">
   <thead>
@@ -25,7 +24,7 @@
       <td>{{user.position}}</td>
       <td>{{user.department}}</td>
       <td>
-        <a href="users/{{user.id}}/edit" ng-show="user._updateable" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
+        <a ng-href="{{ path('UserEditCtrl', { userId: user.id }) }}" ng-show="user._updateable" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
         <a href="#" ng-show="user._deleteable" ng-really-click="deleteUser(user)" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>
       </td>
     </tr>

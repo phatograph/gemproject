@@ -14,6 +14,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present?
+    user.present? && user != record
   end
 end

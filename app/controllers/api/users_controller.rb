@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+  serialization_scope :view_context
+
   inherit_resources
   respond_to :json
   actions :all, :except => [:edit, :new]
