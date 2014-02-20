@@ -1,6 +1,6 @@
 angular.module('app.directives').directive 'memberDropdown', [
-  'Membership', 'User', '$route',
-  (Membership, User, $route) ->
+  'Membership', '$route',
+  (Membership, $route) ->
     restrict: 'A'
     link: (scope, elem, attr) ->
       elem.bind 'change', ->
