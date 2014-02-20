@@ -1,6 +1,6 @@
 angular.module('app.directives').directive 'memberDropdown', [
-  'Membership', 'User',
-  (Membership, User) ->
+  'Membership', 'User', '$route',
+  (Membership, User, $route) ->
     restrict: 'A'
     link: (scope, elem, attr) ->
       elem.bind 'change', ->
@@ -9,6 +9,5 @@ angular.module('app.directives').directive 'memberDropdown', [
           userId: scope.membership.id
 
         xhr.create()
-          .then (obj) ->
-            scope.project.memberships.push obj
+          .then -> $route.reload()
 ]

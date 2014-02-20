@@ -11,6 +11,10 @@ angular.module('app.controllers').controller 'ProjectMembershipCtrl', [
         membership.delete()
           .then -> $route.reload()
 
+    $scope.nonMembers = (user) ->
+      # Does not belong to the project
+      _.find($scope.project.memberships, (u) -> u.user.id == user.id) == undefined
+
   ]
 
 resolvers.ProjectMembershipResolver =
