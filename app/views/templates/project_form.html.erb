@@ -7,15 +7,6 @@
     <form class="form-horizontal">
       <%= render :partial => 'templates/forms/text', :object => 'name', :locals => {:model => 'project'} %>
       <div class="form-group">
-        <label class="col-xs-3 control-label">Add members</label>
-        <div class="col-xs-9">
-          <p ng-repeat="p in projectUsers">
-            <select class="form-control" ng-model="projectUsers[$index]" ng-change="change()" ng-options="user.fullName for user in users">
-            </select>
-          </p>
-        </div>
-      </div>
-      <div class="form-group">
         <div class="col-xs-offset-3 col-xs-9">
           <button ng-click="saveProject()" type="submit" class="btn btn-success">Submit</button>
           <a ng-href="{{ path('UserIndexCtrl') }}" class="btn btn-default">Back</a>

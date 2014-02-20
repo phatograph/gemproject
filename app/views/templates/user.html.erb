@@ -23,7 +23,7 @@
       <td>{{user.employeeNumber}}</td>
       <td>{{user.position}}</td>
       <td>{{user.department}}</td>
-      <td>
+      <td class="td-control">
         <a ng-href="{{ path('UserEditCtrl', { userId: user.id }) }}" ng-show="user._updateable" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
         <a href="#" ng-show="user._deleteable" ng-really-click="deleteUser(user)" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>
       </td>
@@ -48,7 +48,8 @@
   <tbody>
     <tr ng-repeat="project in projects | orderBy: 'name'">
       <td>{{project.name}}</td>
-      <td>
+      <td class="td-control">
+        <a ng-href="{{ path('ProjectMembershipCtrl', { projectId: project.id }) }}" ng-show="project._updateable" class="btn btn-default btn-xs"><i class="fa fa-user"></i></a>
         <a ng-href="{{ path('ProjectEditCtrl', { projectId: project.id }) }}" ng-show="project._updateable" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
         <a href="#" ng-show="project._deleteable" ng-really-click="deleteProject(project)" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>
       </td>

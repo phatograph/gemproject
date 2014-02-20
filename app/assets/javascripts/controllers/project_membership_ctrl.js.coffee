@@ -1,19 +1,9 @@
-angular.module('app.controllers').controller 'ProjectEditCtrl', [
+angular.module('app.controllers').controller 'ProjectMembershipCtrl', [
   '$scope', 'project', '$location', 'users', 'Membership', '$route',
   ($scope, project, $location, users, Membership, $route) ->
 
     $scope.project = project.data
     $scope.users = users.data
-
-    $scope.saveProject = ->
-      $scope.project.save()
-        .then (project) ->
-          $location.path $scope.path 'UserIndexCtrl'
-        .catch (err) ->
-          $scope.errors = err.data.errors
-
-          if err.data._message
-            $scope.flash = type: 'danger', message: "#{err.data._message} (#{err.status})"
 
     $scope.deleteMember = (membership) ->
       xhr = Membership.get membership.id
@@ -23,7 +13,7 @@ angular.module('app.controllers').controller 'ProjectEditCtrl', [
 
   ]
 
-resolvers.ProjectShowResolver =
+resolvers.ProjectMembershipResolver =
   project: [
     '$q', 'Project', '$route',
     ($q, Project, $route) ->

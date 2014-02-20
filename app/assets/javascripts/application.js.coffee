@@ -61,6 +61,11 @@ angular.module('app').config [
       templateUrl: Routes.template_path('project_form')
       resolve: resolvers.ProjectShowResolver
 
+    $routeProvider.when '/projects/:projectId/memberships',
+      controller: 'ProjectMembershipCtrl'
+      templateUrl: Routes.template_path('project_memberships')
+      resolve: resolvers.ProjectMembershipResolver
+
     $routeProvider.otherwise redirectTo: '/'
 
   ]

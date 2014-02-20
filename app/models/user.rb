@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name,
     :last_name
 
+  has_many :memberships, :dependent => :destroy
+  has_many :projects, :through => :memberships
+
   def full_name
     "#{first_name} #{last_name}"
   end

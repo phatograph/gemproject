@@ -4,6 +4,7 @@ Gemproject::Application.routes.draw do
   namespace :api do
     resources :users
     resources :projects
+    resources :memberships
   end
 
   # Erb-rendered templates, without layouts.
