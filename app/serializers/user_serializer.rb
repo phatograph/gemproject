@@ -8,10 +8,15 @@ class UserSerializer < ActiveModel::Serializer
              :employee_number,
              :department,
              :full_name,
+             :_createable,
              :_deletable
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def _createable
+    UserPolicy.new(current_user, User).create?
   end
 
   def _deletable

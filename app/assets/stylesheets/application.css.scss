@@ -1,5 +1,13 @@
 /*
  *= require bootstrap
+ *= require font-awesome
  *= require_self
  *= require_tree .
  */
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Glyphicons Halflings'), local('Glyphicons Halflings'), asset-url('Glyphicons/glyphicons-halflings-regular.woff') format('woff');
+}

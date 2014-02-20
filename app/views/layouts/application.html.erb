@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Gem Project</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", :media => "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -14,14 +14,14 @@
 
       <% if user_signed_in? %>
         <div class="navbar-text navbar-right">
-          <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :target => "_self" %>
         </div>
         <div class="navbar-text navbar-right">
           Signed in as <strong><%= current_user.email %></strong>
         </div>
       <% else %>
         <div class="navbar-text navbar-right">
-          <%= link_to 'Sign in', new_user_session_path %>
+          <%= link_to "Sign in", new_user_session_path, :target => "_self" %>
         </div>
       <% end %>
     </div>
