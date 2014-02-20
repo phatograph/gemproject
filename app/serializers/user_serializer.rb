@@ -3,11 +3,11 @@ class UserSerializer < ApplicationSerializer
              :first_name,
              :last_name,
              :email,
-             :password,
              :position,
              :employee_number,
              :department,
              :full_name,
+
              :_createable,
              :_updateable,
              :_deleteable
