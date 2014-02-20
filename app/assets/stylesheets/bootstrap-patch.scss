@@ -1,0 +1,22 @@
+@import 'bootstrap';
+
+.alert-notice {
+    @extend .alert-info;
+}
+
+.alert-alert {
+    @extend .alert-danger;
+}
+
+/* Devise error */
+#error_explanation {
+    @extend .alert;
+    @extend .alert-danger;
+    @extend .alert-block; /* optional */
+
+    h2 {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0 0 10px;
+    }
+}

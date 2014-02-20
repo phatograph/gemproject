@@ -6,11 +6,11 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="app">
+<body <% unless content_for?(:static) %>ng-app="app"<% end %>>
 
   <nav class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
-      <a class="navbar-brand" href="/">Gem Project</a>
+      <a class="navbar-brand" href="/" target="_self">Gem Project</a>
 
       <% if user_signed_in? %>
         <div class="navbar-text navbar-right">
@@ -27,9 +27,25 @@
     </div>
   </nav>
 
-  <div ng-view class="container">
-    <%= yield %>
-  </div>
+  <% if content_for?(:static)  %>
+    <div class="container">
+      <% [:notice, :error, :success, :info, :alert].each do |key| %>
+        <% if flash[key].present? %>
+          <div class="alert alert-<%= key %>">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= flash[key] %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="container">
+      <%= yield(:static) %>
+    </div>
+  <% else %>
+    <div ng-view class="container">
+      <%= yield %>
+    </div>
+  <% end %>
 
 </body>
 </html>

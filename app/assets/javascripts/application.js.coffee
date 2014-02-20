@@ -51,6 +51,8 @@ angular.module('app').config [
       templateUrl: Routes.template_path('user_form')
       resolve: resolvers.UserShowResolver
 
+    $routeProvider.otherwise redirectTo: '/'
+
   ]
 
 angular.module('app').config [

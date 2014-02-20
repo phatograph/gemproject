@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h2>Add new user</h2>
+  <h2>{{user.id ? 'Edit ' + user.fullName : 'Add new user'}}</h2>
 </div>
 
 <div class="row">
@@ -7,14 +7,16 @@
     <form class="form-horizontal">
       <%= render :partial => 'templates/forms/text', :object => 'firstName', :locals => {} %>
       <%= render :partial => 'templates/forms/text', :object => 'lastName', :locals => {} %>
-      <%= render :partial => 'templates/forms/text', :object => 'email', :locals => {} %>
+      <%= render :partial => 'templates/forms/text', :object => 'email', :locals => {:type => 'email'} %>
       <%= render :partial => 'templates/forms/text', :object => 'employeeNumber', :locals => {} %>
       <%= render :partial => 'templates/forms/text', :object => 'position', :locals => {} %>
       <%= render :partial => 'templates/forms/text', :object => 'department', :locals => {} %>
-      <div class="panel panel-default" ng-show="!user.id">
+      <div class="panel panel-default">
         <div class="panel-body">
           <%= render :partial => 'templates/forms/text', :object => 'password', :locals => {:type => 'password'} %>
-          <%= render :partial => 'templates/forms/text', :object => 'confirmPassword', :locals => {:type => 'password'} %>
+          <div ng-hide="user.id">
+            <%= render :partial => 'templates/forms/text', :object => 'confirmPassword', :locals => {:type => 'password'} %>
+          </div>
         </div>
       </div>
       <div class="form-group">
