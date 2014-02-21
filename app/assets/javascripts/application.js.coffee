@@ -66,6 +66,11 @@ angular.module('app').config [
       templateUrl: Routes.template_path('project_memberships')
       resolve: resolvers.ProjectMembershipResolver
 
+    $routeProvider.when '/projects/:projectId/tasks',
+      controller: 'ProjectTaskIndexCtrl'
+      templateUrl: Routes.template_path('project_task')
+      resolve: resolvers.ProjectShowResolver
+
     $routeProvider.otherwise redirectTo: '/'
 
   ]

@@ -30,3 +30,17 @@ resolvers.ProjectShowResolver =
       deferred.promise
 
   ]
+
+  tasks: [
+    '$q', 'Task', '$route',
+    ($q, Task, $route) ->
+
+      deferred = $q.defer()
+
+      xhr = Task.get projectId: $route.current.params.projectId
+      xhr.then (data) -> deferred.resolve status: 200, data: data
+      xhr.catch (error) -> deferred.resolve status: 404, data: error.data
+
+      deferred.promise
+
+  ]

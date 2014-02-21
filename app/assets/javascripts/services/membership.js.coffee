@@ -3,7 +3,7 @@ angular.module('app.services').factory 'Membership', [
   (railsResourceFactory, railsSerializer) ->
 
     railsResourceFactory
-      url: Routes.api_memberships_path()
+      url: Routes.api_membership_path '{{ id }}'
       name: 'membership'
 
   ]

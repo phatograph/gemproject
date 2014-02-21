@@ -3,7 +3,9 @@ Gemproject::Application.routes.draw do
 
   namespace :api do
     resources :users
-    resources :projects
+    resources :projects do
+      resources :tasks
+    end
     resources :memberships
   end
 

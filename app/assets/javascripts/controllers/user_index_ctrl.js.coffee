@@ -25,25 +25,15 @@ resolvers.UserIndexResolver =
   users: [
     '$q', 'User',
     ($q, User) ->
-
       deferred = $q.defer()
-      User.query().then (users) ->
-        deferred.resolve
-          status: 200
-          data: users
-
+      User.get().then (users) -> deferred.resolve status: 200, data: users
       deferred.promise
   ]
 
   projects: [
     '$q', 'Project',
     ($q, Project) ->
-
       deferred = $q.defer()
-      Project.query().then (projects) ->
-        deferred.resolve
-          status: 200
-          data: projects
-
+      Project.get().then (projects) -> deferred.resolve status: 200, data: projects
       deferred.promise
   ]

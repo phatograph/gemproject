@@ -3,7 +3,7 @@ angular.module('app.services').factory 'Project', [
   (railsResourceFactory, railsSerializer) ->
 
     railsResourceFactory
-      url: Routes.api_projects_path()
+      url: Routes.api_project_path '{{ id }}'
       name: 'project'
 
   ]
