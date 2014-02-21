@@ -4,7 +4,6 @@ angular.module('app.services').factory 'Project', [
 
     railsResourceFactory
       url: Routes.api_projects_path()
-      exclusionMatchers: '_'
       name: 'project'
 
   ]

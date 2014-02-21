@@ -4,7 +4,6 @@ angular.module('app.services').factory 'User', [
 
     railsResourceFactory
       url: Routes.api_users_path()
-      exclusionMatchers: '_'
       name: 'user'
 
   ]

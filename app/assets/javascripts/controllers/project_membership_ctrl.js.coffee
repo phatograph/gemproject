@@ -1,9 +1,10 @@
 angular.module('app.controllers').controller 'ProjectMembershipCtrl', [
-  '$scope', 'project', '$location', 'users', 'Membership', '$route',
-  ($scope, project, $location, users, Membership, $route) ->
+  '$scope', 'project', 'users', 'Membership', '$route', 'memberships',
+  ($scope, project, users, Membership, $route, memberships) ->
 
     $scope.project = project.data
     $scope.users = users.data
+    $scope.memberships = memberships.data
 
     $scope.deleteMember = (membership) ->
       xhr = Membership.get membership.id
@@ -13,7 +14,7 @@ angular.module('app.controllers').controller 'ProjectMembershipCtrl', [
 
     $scope.nonMembers = (user) ->
       # Does not belong to the project
-      _.find($scope.project.memberships, (u) -> u.user.id == user.id) == undefined
+      _.find($scope.memberships, (m) -> m.userId == user.id) == undefined
 
   ]
 
@@ -23,10 +24,11 @@ resolvers.ProjectMembershipResolver =
     ($q, Project, $route) ->
 
       deferred = $q.defer()
-      projectXhr = Project.get $route.current.params.projectId
 
-      projectXhr.then (project) -> deferred.resolve status: 200, data: project
-      projectXhr.catch (error) -> deferred.resolve status: 404, data: error.data
+      xhr = Project.get $route.current.params.projectId
+      xhr.then (data) -> deferred.resolve status: 200, data: data
+      xhr.catch (error) -> deferred.resolve status: 404, data: error.data
+
       deferred.promise
 
   ]
@@ -36,10 +38,23 @@ resolvers.ProjectMembershipResolver =
     ($q, User) ->
 
       deferred = $q.defer()
-      User.query().then (users) ->
-        deferred.resolve
-          status: 200
-          data: users
+
+      xhr = User.query()
+      xhr.then (data) -> deferred.resolve status: 200, data: data
 
       deferred.promise
+  ]
+
+  memberships: [
+    '$q', 'Membership', '$route',
+    ($q, Membership, $route) ->
+
+      deferred = $q.defer()
+
+      xhr = Membership.query projectId: $route.current.params.projectId
+      xhr.then (data) -> deferred.resolve status: 200, data: data
+      xhr.catch (error) -> deferred.resolve status: 404, data: error.data
+
+      deferred.promise
+
   ]
