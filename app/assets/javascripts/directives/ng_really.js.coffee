@@ -1,4 +1,4 @@
-angular.module('app').directive 'ngReallyClick', [
+angular.module('app.directives').directive 'ngReallyClick', [
   ->
     restrict: 'A',
     link: (scope, element, attrs) ->
