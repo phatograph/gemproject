@@ -1,7 +1,11 @@
+<ol class="breadcrumb">
+  <li class="active">Dashboard</li>
+</ol>
+
 <div class="page-header">
   <h2>
     <span>Users</span>
-    <a ng-show="users[0]._createable" ng-href="{{ path('UserNewCtrl') }}" class="btn btn-success pull-right">Add new user</a>
+    <a ng-show="<%= policy(User).create? %>" ng-href="{{ path('UserNewCtrl') }}" class="btn btn-success pull-right">Add new user</a>
   </h2>
 </div>
 
@@ -34,7 +38,7 @@
 <div class="page-header">
   <h2>
     <span>Projects</span>
-    <a ng-show="projects[0]._createable" ng-href="{{ path('ProjectNewCtrl') }}" class="btn btn-success pull-right">Add new project</a>
+    <a ng-show="<%= policy(Project).create? %>" ng-href="{{ path('ProjectNewCtrl') }}" class="btn btn-success pull-right">Add new project</a>
   </h2>
 </div>
 

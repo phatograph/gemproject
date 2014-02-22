@@ -1,3 +1,11 @@
+<ol class="breadcrumb">
+  <li><a ng-href="{{ path('UserIndexCtrl') }}">Dashboard</a></li>
+  <li class="active">Users</li>
+  <li class="active" ng-hide="user.id">New</li>
+  <li class="active" ng-show="user.id">{{ user.fullName }}</li>
+  <li class="active" ng-show="user.id">Edit</li>
+</ol>
+
 <div class="page-header">
   <h2>{{user.id ? 'Edit ' : 'Add new'}} user</h2>
 </div>
