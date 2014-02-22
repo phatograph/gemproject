@@ -11,8 +11,4 @@ class UserSerializer < ApplicationSerializer
              :_createable,
              :_updateable,
              :_deleteable
-
-  def full_name
-    "#{first_name} #{last_name}"
-  end
 end

@@ -71,6 +71,11 @@ angular.module('app').config [
       templateUrl: Routes.template_path('project_task')
       resolve: resolvers.ProjectShowResolver
 
+    $routeProvider.when '/projects/:projectId/tasks/new',
+      controller: 'ProjectTaskNewCtrl'
+      templateUrl: Routes.template_path('project_task_form')
+      resolve: resolvers.ProjectShowResolver
+
     $routeProvider.otherwise redirectTo: '/'
 
   ]

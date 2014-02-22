@@ -1,5 +1,8 @@
 <div class="page-header">
-  <h2>Tasks of {{ project.name }}</h2>
+  <h2>
+    <span>Tasks of {{ project.name }}</span>
+    <a ng-show="true" ng-href="{{ path('ProjectTaskNewCtrl', { projectId: project.id }) }}" class="btn btn-success pull-right">Add new task</a>
+  </h2>
 </div>
 
 <table class="table table-striped">

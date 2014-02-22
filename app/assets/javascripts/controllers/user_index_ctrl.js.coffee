@@ -4,6 +4,7 @@ angular.module('app.controllers').controller 'UserIndexCtrl', [
 
     $scope.users = users.data
     $scope.projects = projects.data
+    console.log projects.data[0]
 
     $scope.deleteUser = (user) ->
       user.delete()
