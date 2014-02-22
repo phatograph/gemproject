@@ -4,21 +4,24 @@ angular.module('app.controllers').controller 'UserIndexCtrl', [
 
     $scope.users = users.data
     $scope.projects = projects.data
-    console.log projects.data[0]
 
     $scope.deleteUser = (user) ->
       user.delete()
         .then -> $route.reload()
         .catch (err) ->
           if err.data._message
-            $scope.flash = type: 'danger', message: "#{err.data._message} (#{err.status})"
+            $scope.flash =
+              type: 'danger'
+              message: "#{err.data._message} (#{err.status})"
 
     $scope.deleteProject = (project) ->
       project.delete()
         .then -> $route.reload()
         .catch (err) ->
           if err.data._message
-            $scope.flash = type: 'danger', message: "#{err.data._message} (#{err.status})"
+            $scope.flash =
+              type: 'danger'
+              message: "#{err.data._message} (#{err.status})"
 
   ]
 
@@ -35,6 +38,7 @@ resolvers.UserIndexResolver =
     '$q', 'Project',
     ($q, Project) ->
       deferred = $q.defer()
-      Project.get().then (projects) -> deferred.resolve status: 200, data: projects
+      Project.get().then (projects) ->
+        deferred.resolve status: 200, data: projects
       deferred.promise
   ]

@@ -12,7 +12,9 @@ angular.module('app.controllers').controller 'ProjectEditCtrl', [
           $scope.errors = err.data.errors
 
           if err.data._message
-            $scope.flash = type: 'danger', message: "#{err.data._message} (#{err.status})"
+            $scope.flash =
+              type: 'danger'
+              message: "#{err.data._message} (#{err.status})"
 
   ]
 
@@ -28,7 +30,21 @@ resolvers.ProjectShowResolver =
       xhr.catch (error) -> deferred.resolve status: 404, data: error.data
 
       deferred.promise
+  ]
 
+  task: [
+    '$q', 'Task', '$route',
+    ($q, Task, $route) ->
+
+      deferred = $q.defer()
+
+      xhr = Task.get
+        projectId: $route.current.params.projectId
+        id: $route.current.params.taskId
+      xhr.then (data) -> deferred.resolve status: 200, data: data
+      xhr.catch (error) -> deferred.resolve status: 404, data: error.data
+
+      deferred.promise
   ]
 
   tasks: [
@@ -42,5 +58,4 @@ resolvers.ProjectShowResolver =
       xhr.catch (error) -> deferred.resolve status: 404, data: error.data
 
       deferred.promise
-
   ]
