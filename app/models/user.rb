@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
     :last_name
 
   has_many :memberships, :dependent => :destroy
+  has_many :assignments, :dependent => :destroy
   has_many :projects, :through => :memberships
+  has_many :tasks, :through => :assignments
 
   def full_name
     "#{first_name} #{last_name}"

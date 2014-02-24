@@ -81,6 +81,11 @@ angular.module('app').config [
       templateUrl: Routes.template_path('project_task_form')
       resolve: resolvers.ProjectShowResolver
 
+    $routeProvider.when '/projects/:projectId/tasks/:taskId/assignments',
+      controller: 'ProjectTaskAssignmentCtrl'
+      templateUrl: Routes.template_path('project_task_assignments')
+      resolve: resolvers.ProjectAssignmentResolver
+
     $routeProvider.otherwise redirectTo: '/'
 
   ]

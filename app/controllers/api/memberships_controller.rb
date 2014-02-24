@@ -23,16 +23,15 @@ class Api::MembershipsController < Api::BaseController
 
   def create
     membership_params = permitted_params[:membership]
-
-    project = Project.find membership_params[:project_id]
-    user = User.find membership_params[:user_id]
+    project           = Project.find membership_params[:project_id]
+    user              = User.find membership_params[:user_id]
 
     authorize project, :update?
     authorize user, :update?
 
     membership = Membership.create do |membership|
-      membership.user    = user
       membership.project = project
+      membership.user    = user
     end
 
     render :json => membership
