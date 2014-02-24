@@ -6,8 +6,9 @@ angular.module('app.directives').directive 'assignmentDropdown', [
       elem.bind 'change', ->
         xhr = new Assignment
           taskId: scope.task.id
-          userId: scope.assignment.id
+          userId: scope.assignment.userId  # membership object
 
+        # TODO: apply rules in policy
         xhr.create()
           .then -> $route.reload()
 ]

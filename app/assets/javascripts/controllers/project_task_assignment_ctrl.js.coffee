@@ -1,20 +1,22 @@
 angular.module('app.controllers').controller 'ProjectTaskAssignmentCtrl', [
-  '$scope', '$location', '$route', 'project', 'task', 'assignments', 'users', 'Assignment'
-  ($scope, $location, $route, project, task, assignments, users, Assignment) ->
+  '$scope', '$location', '$route', 'project', 'task', 'assignments', 'Assignment', 'memberships',
+  ($scope, $location, $route, project, task, assignments, Assignment, memberships) ->
     $scope.project     = project.data
     $scope.task        = task.data
     $scope.assignments = assignments.data
-    $scope.users       = users.data
+    $scope.memberships = memberships.data
 
     $scope.deleteAssignment = (assignment) ->
       xhr = Assignment.get assignment.id
+
+      # TODO: apply rules in policy
       xhr.then (assignment) ->
         assignment.delete()
           .then -> $route.reload()
 
-    # $scope.nonMembers = (user) ->
-    #   # Does not belong to the project
-    #   _.find($scope.assignments, (m) -> m.userId == user.id) == undefined
+    $scope.nonAssignees = (membership) ->
+      # Does not belong to the task
+      _.find($scope.assignments, (x) -> x.userId == membership.userId) == undefined
 ]
 
 resolvers.ProjectAssignmentResolver =
@@ -31,14 +33,15 @@ resolvers.ProjectAssignmentResolver =
       deferred.promise
   ]
 
-  users: [
-    '$q', 'User',
-    ($q, User) ->
+  memberships: [
+    '$q', 'Membership', '$route',
+    ($q, Membership, $route) ->
 
       deferred = $q.defer()
 
-      xhr = User.query()
+      xhr = Membership.query projectId: $route.current.params.projectId
       xhr.then (data) -> deferred.resolve status: 200, data: data
+      xhr.catch (error) -> deferred.resolve status: 404, data: error.data
 
       deferred.promise
   ]

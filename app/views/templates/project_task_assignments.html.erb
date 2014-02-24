@@ -24,10 +24,10 @@
           </div>
         </div>
       </div>
-      <div class="form-group" ng-show="assignments.length != users.length">
+      <div class="form-group" ng-show="assignments.length != memberships.length">
         <label class="col-xs-3 control-label">Assign members</label>
         <div class="col-xs-9">
-          <select assignment-dropdown class="form-control" ng-model="assignment" ng-options="user.fullName for user in users | orderBy: 'fullName'"></select>
+          <select assignment-dropdown class="form-control" ng-model="assignment" ng-options="membership.user.fullName for membership in memberships | orderBy: 'fullName' | filter: nonAssignees"></select>
         </div>
       </div>
       <div class="form-group">
