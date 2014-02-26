@@ -76,6 +76,11 @@ angular.module('app').config [
       templateUrl: Routes.template_path('project_task_form')
       resolve: resolvers.ProjectShowResolver
 
+    $routeProvider.when '/projects/:projectId/tasks/:taskId',
+      controller: 'ProjectTaskShowCtrl'
+      templateUrl: Routes.template_path('project_task_timelog')
+      resolve: resolvers.ProjectTaskIndexResolver
+
     $routeProvider.when '/projects/:projectId/tasks/:taskId/edit',
       controller: 'ProjectTaskEditCtrl'
       templateUrl: Routes.template_path('project_task_form')
