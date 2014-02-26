@@ -1,14 +1,13 @@
 resolvers.user = [
   '$q', 'User', '$route',
   ($q, User, $route) ->
-
     deferred = $q.defer()
-    userXhr = User.get $route.current.params.userId
 
+    userXhr = User.get $route.current.params.userId
     userXhr.then (user) -> deferred.resolve status: 200, data: user
     userXhr.catch (error) -> deferred.resolve status: 404, data: error.data
-    deferred.promise
 
+    deferred.promise
 ]
 
 resolvers.users = [
@@ -22,7 +21,6 @@ resolvers.users = [
 resolvers.project = [
   '$q', 'Project', '$route',
   ($q, Project, $route) ->
-
     deferred = $q.defer()
 
     xhr = Project.get $route.current.params.projectId
@@ -36,15 +34,13 @@ resolvers.projects = [
   '$q', 'Project',
   ($q, Project) ->
     deferred = $q.defer()
-    Project.get().then (projects) ->
-      deferred.resolve status: 200, data: projects
+    Project.get().then (projects) -> deferred.resolve status: 200, data: projects
     deferred.promise
 ]
 
 resolvers.task = [
   '$q', 'Task', '$route',
   ($q, Task, $route) ->
-
     deferred = $q.defer()
 
     xhr = Task.get
@@ -59,7 +55,6 @@ resolvers.task = [
 resolvers.tasks = [
   '$q', 'Task', '$route',
   ($q, Task, $route) ->
-
     deferred = $q.defer()
 
     xhr = Task.get projectId: $route.current.params.projectId
@@ -72,7 +67,6 @@ resolvers.tasks = [
 resolvers.memberships = [
   '$q', 'Membership', '$route',
   ($q, Membership, $route) ->
-
     deferred = $q.defer()
 
     xhr = Membership.query projectId: $route.current.params.projectId
@@ -85,7 +79,6 @@ resolvers.memberships = [
 resolvers.assignments = [
   '$q', 'Assignment', '$route',
   ($q, Assignment, $route) ->
-
     deferred = $q.defer()
 
     xhr = Assignment.query taskId: $route.current.params.taskId
