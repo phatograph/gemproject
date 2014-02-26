@@ -54,8 +54,7 @@
       <td>{{project.name}}</td>
       <td class="td-control">
         <a ng-href="{{ path('ProjectTaskIndexCtrl', { projectId: project.id }) }}" ng-show="true" class="btn btn-default btn-xs"><span>{{ project.tasksCount }}</span> <i class="fa fa-bars"></i></a>
-        <a ng-href="{{ path('ProjectMembershipCtrl', { projectId: project.id }) }}" ng-show="project._updateable" class="btn btn-default btn-xs"><i class="fa fa-user"></i></a>
-        <a ng-href="{{ path('ProjectEditCtrl', { projectId: project.id }) }}" ng-show="project._updateable" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
+        <a ng-href="{{ path('ProjectEditCtrl', { projectId: project.id }) }}" ng-show="project._updateable" class="btn btn-default btn-xs"><i class="fa fa-user"></i> <i class="fa fa-pencil"></i></a>
         <a href="#" ng-show="project._deleteable" ng-really-click="deleteProject(project)" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>
       </td>
     </tr>

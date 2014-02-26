@@ -6,7 +6,7 @@ angular.module('app.controllers').controller 'ProjectNewCtrl', [
     $scope.saveProject = ->
       $scope.project.create()
         .then (project) ->
-          $location.path $scope.path 'UserIndexCtrl'
+          $location.path $scope.path 'ProjectEditCtrl', projectId: project.id
         .catch (err) ->
           $scope.errors = err.data.errors
 
