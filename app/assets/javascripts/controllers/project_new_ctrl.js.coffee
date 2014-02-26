@@ -13,5 +13,4 @@ angular.module('app.controllers').controller 'ProjectNewCtrl', [
           if err.data._message
             $scope.flash = type: 'danger', message: "#{err.data._message} (#{err.status})"
 
-  ]
-
+]

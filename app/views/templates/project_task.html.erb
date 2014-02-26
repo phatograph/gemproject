@@ -23,8 +23,7 @@
     <tr ng-repeat="task in tasks | orderBy: 'name'">
       <td><a ng-href="{{ path('ProjectTaskShowCtrl', { projectId: project.id, taskId: task.id }) }}" ng-show="task._updateable">{{ task.name }}</a></td>
       <td class="td-control">
-        <a ng-href="{{ path('ProjectTaskAssignmentCtrl', { projectId: project.id, taskId: task.id}) }}" ng-show="true" class="btn btn-default btn-xs"><i class="fa fa-user"></i></a>
-        <a ng-href="{{ path('ProjectTaskEditCtrl', { projectId: project.id, taskId: task.id }) }}" ng-show="task._updateable" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
+        <a ng-href="{{ path('ProjectTaskEditCtrl', { projectId: project.id, taskId: task.id }) }}" ng-show="task._updateable" class="btn btn-default btn-xs"><i class="fa fa-user"></i> <i class="fa fa-pencil"></i></a>
         <a href="#" ng-show="task._deleteable" ng-really-click="deleteTask(task)" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>
       </td>
     </tr>

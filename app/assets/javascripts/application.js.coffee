@@ -31,6 +31,7 @@ angular.module 'app.directives', []
 angular.module 'app.filters', []
 angular.module 'app.services', []
 
+
 ##
 # Module configuration
 #
@@ -41,7 +42,9 @@ angular.module('app').config [
     $routeProvider.when '/',
       controller: 'UserIndexCtrl'
       templateUrl: Routes.template_path('user')
-      resolve: resolvers.UserIndexResolver
+      resolve:
+        users: resolvers.users
+        projects: resolvers.projects
 
     $routeProvider.when '/users/new',
       controller: 'UserNewCtrl'
@@ -50,7 +53,8 @@ angular.module('app').config [
     $routeProvider.when '/users/:userId/edit',
       controller: 'UserEditCtrl'
       templateUrl: Routes.template_path('user_form')
-      resolve: resolvers.UserShowResolver
+      resolve:
+        user: resolvers.user
 
     $routeProvider.when '/projects/new',
       controller: 'ProjectNewCtrl'
@@ -59,32 +63,41 @@ angular.module('app').config [
     $routeProvider.when '/projects/:projectId/edit',
       controller: 'ProjectEditCtrl'
       templateUrl: Routes.template_path('project_form')
-      resolve: resolvers.ProjectShowResolver
+      resolve:
+        project: resolvers.project
+        users: resolvers.users
+        memberships: resolvers.memberships
 
     $routeProvider.when '/projects/:projectId/tasks',
       controller: 'ProjectTaskIndexCtrl'
       templateUrl: Routes.template_path('project_task')
-      resolve: resolvers.ProjectShowResolver
+      resolve:
+        tasks: resolvers.tasks
+        project: resolvers.project
 
     $routeProvider.when '/projects/:projectId/tasks/new',
       controller: 'ProjectTaskNewCtrl'
       templateUrl: Routes.template_path('project_task_form')
-      resolve: resolvers.ProjectShowResolver
+      resolve:
+        project: resolvers.project
 
     $routeProvider.when '/projects/:projectId/tasks/:taskId',
       controller: 'ProjectTaskShowCtrl'
       templateUrl: Routes.template_path('project_task_timelog')
-      resolve: resolvers.ProjectTaskIndexResolver
+      resolve:
+        task: resolvers.task
+        project: resolvers.project
+        assignments: resolvers.assignments
 
     $routeProvider.when '/projects/:projectId/tasks/:taskId/edit',
       controller: 'ProjectTaskEditCtrl'
       templateUrl: Routes.template_path('project_task_form')
-      resolve: resolvers.ProjectShowResolver
+      resolve:
+        project: resolvers.project
+        task: resolvers.task
+        assignments: resolvers.assignments
+        memberships: resolvers.memberships
 
-    $routeProvider.when '/projects/:projectId/tasks/:taskId/assignments',
-      controller: 'ProjectTaskAssignmentCtrl'
-      templateUrl: Routes.template_path('project_task_assignments')
-      resolve: resolvers.ProjectAssignmentResolver
 
     $routeProvider.otherwise redirectTo: '/'
 

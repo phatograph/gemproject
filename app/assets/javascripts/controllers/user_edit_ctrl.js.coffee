@@ -13,17 +13,3 @@ angular.module('app.controllers').controller 'UserEditCtrl', [
           if err.data._message
             $scope.flash = type: 'danger', message: "#{err.data._message} (#{err.status})"
   ]
-
-resolvers.UserShowResolver =
-  user: [
-    '$q', 'User', '$route',
-    ($q, User, $route) ->
-
-      deferred = $q.defer()
-      userXhr = User.get $route.current.params.userId
-
-      userXhr.then (user) -> deferred.resolve status: 200, data: user
-      userXhr.catch (error) -> deferred.resolve status: 404, data: error.data
-      deferred.promise
-
-  ]

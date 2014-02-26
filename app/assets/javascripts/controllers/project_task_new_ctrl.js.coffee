@@ -17,5 +17,4 @@ angular.module('app.controllers').controller 'ProjectTaskNewCtrl', [
               type: 'danger',
               message: "#{err.data._message} (#{err.status})"
 
-  ]
-
+]

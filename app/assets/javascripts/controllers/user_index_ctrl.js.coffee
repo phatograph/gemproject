@@ -23,22 +23,4 @@ angular.module('app.controllers').controller 'UserIndexCtrl', [
               type: 'danger'
               message: "#{err.data._message} (#{err.status})"
 
-  ]
-
-resolvers.UserIndexResolver =
-  users: [
-    '$q', 'User',
-    ($q, User) ->
-      deferred = $q.defer()
-      User.get().then (users) -> deferred.resolve status: 200, data: users
-      deferred.promise
-  ]
-
-  projects: [
-    '$q', 'Project',
-    ($q, Project) ->
-      deferred = $q.defer()
-      Project.get().then (projects) ->
-        deferred.resolve status: 200, data: projects
-      deferred.promise
-  ]
+]
