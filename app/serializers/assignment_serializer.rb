@@ -4,4 +4,5 @@ class AssignmentSerializer < ApplicationSerializer
     :user_id
 
   has_one :user
+  has_many :timelogs
 end

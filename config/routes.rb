@@ -8,6 +8,7 @@ Gemproject::Application.routes.draw do
     end
     resources :memberships
     resources :assignments
+    resources :timelogs
   end
 
   # Erb-rendered templates, without layouts.
