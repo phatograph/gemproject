@@ -16,4 +16,12 @@ class AssignmentPolicy < ApplicationPolicy
   def destroy?
     user.present?
   end
+
+  def start?
+    user.present? && !record.running? && user.id == record.user.id
+  end
+
+  def stop?
+    user.present? && record.running? && user.id == record.user.id
+  end
 end

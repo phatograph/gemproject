@@ -1,4 +1,5 @@
 class TimelogSerializer < ApplicationSerializer
   attributes :id,
-    :started_at
+    :started_at,
+    :ended_at
 end

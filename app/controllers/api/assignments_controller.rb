@@ -1,4 +1,6 @@
 class Api::AssignmentsController < Api::BaseController
+  custom_actions :resource => [:start, :stop]
+
   def index
     task_id = params[:task_id]
     user_id = params[:user_id]
@@ -19,6 +21,16 @@ class Api::AssignmentsController < Api::BaseController
     end
 
     render :json => Assignment.where(query)
+  end
+
+  def start
+    @assignment.start
+    render :json => @assignment
+  end
+
+  def stop
+    @assignment.stop
+    render :json => @assignment
   end
 
   def create

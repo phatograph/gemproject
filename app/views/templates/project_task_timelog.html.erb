@@ -11,11 +11,11 @@
   <h2>Time logs</h2>
 </div>
 
-<a href="#" ng-click="createTimelog()">Start task</a>
-
 <div ng-repeat="assignment in assignments">
-  {{ assignment.user.fullName }}
+  {{ assignment.user.fullName }} ({{ assignment.totalTime }})
+  <a href="#" ng-hide="false && assignment.running" ng-click="startTimelog(assignment)">Start task</a>
+  <a href="#" ng-show="true || assignment.running" ng-click="stopTimelog(assignment)">Stop task</a>
   <ul>
-    <li ng-repeat="timelog in assignment.timelogs">{{ timelog.startedAt }}</li>
+    <li ng-repeat="timelog in assignment.timelogs">{{ timelog.startedAt }} : {{ timelog.endedAt }}</li>
   </ul>
 </div>
