@@ -1,0 +1,38 @@
+<ol class="breadcrumb">
+  <li><a ng-href="{{ path('UserIndexCtrl') }}">Dashboard</a></li>
+  <li class="active">Projects</li>
+  <li class="active">{{ project.name }}</li>
+  <li><a ng-href="{{ path('ProjectTaskIndexCtrl', { projectId: project.id }) }}">Tasks</a></li>
+  <li class="active" ng-hide="task.id">New</li>
+  <li class="active" ng-show="task.id">{{ task.name }}</li>
+</ol>
+
+<div class="page-header">
+  <h2>Time logs</h2>
+</div>
+
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3" ng-repeat="assignment in assignments">
+    <h3 class="timelog clearfix">
+      {{ assignment.user.fullName }}
+      <div class="pull-right">
+        <a href="#" class="btn btn-success" ng-show="assignment._startable" ng-click="startTimelog(assignment)">Start task</a>
+        <a href="#" class="btn btn-danger" ng-show="assignment._stoppable" ng-click="stopTimelog(assignment)">Stop task</a>
+        <span class="btn btn-default">{{ assignment.totalTime }}<span ng-show="assignment.running">+</span></span>
+      </div>
+    </h3>
+    <div class="panel" ng-class="{ 'panel-success': timelog.endedAt != null, 'panel-warning': timelog.endedAt == null }" ng-repeat="timelog in assignment.timelogs">
+      <div class="panel-heading">
+        <strong title="{{ timelog.startedAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a' }}">{{ timelog.startedAt | amCalendar }}</strong>
+        <i class="fa fa-long-arrow-right"></i>
+        <strong title="{{ timelog.endedAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a' }}">{{ timelog.endedAt | amCalendar }}</strong>
+        <span class="pull-right">{{ timelog.totalTime }}</span>
+      </div>
+    </div>
+    <div class="panel panel-default" ng-hide="assignment.timelogs.length">
+      <div class="panel-body">
+        No time logging yet
+      </div>
+    </div>
+  </div>
+</div>

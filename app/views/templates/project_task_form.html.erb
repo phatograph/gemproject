@@ -4,7 +4,7 @@
   <li class="active">{{ project.name }}</li>
   <li><a ng-href="{{ path('ProjectTaskIndexCtrl', { projectId: project.id }) }}">Tasks</a></li>
   <li class="active" ng-hide="task.id">New</li>
-  <li class="active" ng-show="task.id">{{ task.name }}</li>
+  <li class="active" ng-show="task.id"><a ng-href="{{ path('ProjectTaskShowCtrl', { projectId: project.id, taskId: task.id }) }}">{{ task.name }}</a></li>
   <li class="active" ng-show="task.id">Edit</li>
 </ol>
 

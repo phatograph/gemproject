@@ -3,7 +3,10 @@
 #= require js-routes
 #= require lodash
 #= require bootstrap
+#= require moment-with-langs
+#= require moment-timezone
 #= require angular
+#= require angular-moment
 #= require angular-route
 #= require angularjs/rails/resource
 #= require_self
@@ -15,12 +18,13 @@ window.resolvers = {}
 # Dependent modules
 #
 angular.module 'app', [
-  'ngRoute',
-  'rails',
-  'app.controllers',
-  'app.directives',
-  'app.filters',
-  'app.services',
+  'ngRoute'
+  'rails'
+  'angularMoment'
+  'app.controllers'
+  'app.directives'
+  'app.filters'
+  'app.services'
 ]
 
 ##
@@ -31,14 +35,12 @@ angular.module 'app.directives', []
 angular.module 'app.filters', []
 angular.module 'app.services', []
 
-
 ##
 # Module configuration
 #
 angular.module('app').config [
   '$routeProvider',
   ($routeProvider) ->
-
     $routeProvider.when '/',
       controller: 'UserIndexCtrl'
       templateUrl: Routes.template_path('user')
@@ -83,7 +85,7 @@ angular.module('app').config [
 
     $routeProvider.when '/projects/:projectId/tasks/:taskId',
       controller: 'ProjectTaskShowCtrl'
-      templateUrl: Routes.template_path('project_task_timelog')
+      templateUrl: Routes.template_path('project_task_show')
       resolve:
         task: resolvers.task
         project: resolvers.project
@@ -100,14 +102,13 @@ angular.module('app').config [
 
 
     $routeProvider.otherwise redirectTo: '/'
-
-  ]
+]
 
 angular.module('app').config [
   '$locationProvider',
   ($locationProvider) ->
     $locationProvider.html5Mode(true)
-  ]
+]
 
 # Attach CSRF token alongside with all POST requests.
 angular.module('app').config [
@@ -116,7 +117,7 @@ angular.module('app').config [
     csrfToken = angular.element('meta[name=csrf-token]').prop('content')
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = csrfToken
     return
-  ]
+]
 
 # Monkey-patch AngularJS to fix ng-controller and ng-include bug.
 # Bug: https://github.com/angular/angular.js/issues/4431
@@ -128,5 +129,5 @@ angular.module('app').config [
       ($delegate) ->
         $delegate[0].priority = 900
         return $delegate
-      ]
-  ]
+    ]
+]

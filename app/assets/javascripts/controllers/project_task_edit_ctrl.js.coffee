@@ -5,7 +5,6 @@ angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
     $scope.task = task.data
     $scope.assignments = assignments.data
     $scope.memberships = memberships.data
-    console.log $scope
 
     $scope.deleteAssignment = (assignment) ->
       xhr = Assignment.get assignment.id
