@@ -9,6 +9,7 @@
 #= require angular-moment
 #= require angular-route
 #= require angularjs/rails/resource
+#= require datetimepicker
 #= require_self
 #= require_tree .
 
@@ -21,6 +22,7 @@ angular.module 'app', [
   'ngRoute'
   'rails'
   'angularMoment'
+  'ui.bootstrap.datetimepicker'
   'app.controllers'
   'app.directives'
   'app.filters'

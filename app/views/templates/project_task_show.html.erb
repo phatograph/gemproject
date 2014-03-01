@@ -16,20 +16,57 @@
     <h3 class="timelog clearfix">
       {{ assignment.user.fullName }}
       <div class="pull-right">
+        <span class="btn">{{ assignment.totalTime }}<span ng-show="assignment.running">+</span></span>
         <a href="#" class="btn btn-success" ng-show="assignment._startable" ng-click="startTimelog(assignment)">Start task</a>
         <a href="#" class="btn btn-danger" ng-show="assignment._stoppable" ng-click="stopTimelog(assignment)">Stop task</a>
-        <span class="btn btn-default">{{ assignment.totalTime }}<span ng-show="assignment.running">+</span></span>
       </div>
     </h3>
-    <div class="panel" ng-class="{ 'panel-success': timelog.endedAt != null, 'panel-warning': timelog.endedAt == null }" ng-repeat="timelog in assignment.timelogs">
+    <div class="panel" ng-class="{ 'panel-success': timelog.endedAt != null, 'panel-warning': timelog.endedAt == null }" ng-repeat="timelog in assignment.timelogs | orderBy: 'id'">
       <div class="panel-heading">
         <span title="{{ timelog.startedAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a' }}">{{ timelog.startedAt | amCalendar }}</span>
         <i class="fa fa-long-arrow-right"></i>
-        <span title="{{ timelog.endedAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a' }}">{{ timelog.endedAt | amCalendar }}</span>
+        <span title="{{ timelog.endedAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a' }}" ng-show="timelog.endedAt">{{ timelog.endedAt | amCalendar }}</span>
+        <em ng-hide="timelog.endedAt">Running</em>
         <div class="pull-right">
-          <strong>{{ timelog.totalTime }}</strong>
-          <a href="#" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
+          <strong class="btn-xs">{{ timelog.totalTime }}</strong>
+          <a href="#" ng-click="timelog.editting = !timelog.editting" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
           <a href="#" ng-really-click="deleteTimelog(timelog)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+        </div>
+      </div>
+      <div class="panel-body" ng-show="timelog.editting">
+        <div class="form">
+          <div class="form-group">
+            <label>From</label>
+            <div class="dropdown">
+              <div class="dropdown-toggle" id="startedAt-{{ timelog.id }}" data-toggle="dropdown">
+                <div class="input-group">
+                  <input type="text" class="form-control" value="{{ timelog.startedAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a' }}">
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                </div>
+              </div>
+              <ul class="dropdown-menu">
+                <datetimepicker data-ng-model="timelog.startedAt" data-datetimepicker-config="{ dropdownSelector: '#startedAt-{{ timelog.id }}' }"/>
+              </ul>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>To</label>
+            <div class="dropdown">
+              <div class="dropdown-toggle" id="endedAt-{{ timelog.id }}" data-toggle="dropdown">
+                <div class="input-group">
+                  <input type="text" class="form-control" value="{{ timelog.endedAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a' }}">
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                </div>
+              </div>
+              <ul class="dropdown-menu">
+                <datetimepicker data-ng-model="timelog.endedAt" data-datetimepicker-config="{ dropdownSelector: '#endedAt-{{ timelog.id }}' }"/>
+              </ul>
+            </div>
+          </div>
+          <div class="form-group">
+            <button ng-click="saveTimelog(timelog)" type="submit" class="btn btn-success">Save</button>
+            <a ng-click="resetTimelog(timelog)" class="btn btn-default">Close without saving</a>
+          </div>
         </div>
       </div>
     </div>
