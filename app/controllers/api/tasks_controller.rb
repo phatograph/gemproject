@@ -6,7 +6,9 @@ class Api::TasksController < Api::BaseController
   def permitted_params
     params.permit(:task => [
       :name,
-      :body
+      :body,
+      :status,
+      :content
     ])
   end
 end

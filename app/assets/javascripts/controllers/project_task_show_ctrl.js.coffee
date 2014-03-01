@@ -1,6 +1,6 @@
 angular.module('app.controllers').controller 'ProjectTaskShowCtrl', [
-  '$scope', 'task', 'project', '$route', 'assignments', 'my_assignment',
-  ($scope, task, project, $route, assignments, my_assignment) ->
+  '$scope', 'task', 'project', '$route', 'assignments', 'my_assignment', '$sce',
+  ($scope, task, project, $route, assignments, my_assignment, $sce) ->
     $scope.project       = project.data
     $scope.task          = task.data
     $scope.assignments   = assignments.data
