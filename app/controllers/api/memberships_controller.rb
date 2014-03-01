@@ -18,7 +18,7 @@ class Api::MembershipsController < Api::BaseController
       query[:user_id] = user_id
     end
 
-    render :json => Membership.where(query)
+    render :json => policy_scope(Membership.where(query))
   end
 
   def create

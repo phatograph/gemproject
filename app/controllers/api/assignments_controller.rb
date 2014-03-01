@@ -20,7 +20,7 @@ class Api::AssignmentsController < Api::BaseController
       query[:user_id] = user_id
     end
 
-    render :json => Assignment.where(query)
+    render :json => policy_scope(Assignment.where(query))
   end
 
   def start
