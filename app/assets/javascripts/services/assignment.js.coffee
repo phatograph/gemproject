@@ -5,6 +5,8 @@ angular.module('app.services').factory 'Assignment', [
     resource = railsResourceFactory
       url: Routes.api_assignment_path '{{ id }}'
       name: 'assignment'
+      serializer: railsSerializer () ->
+        @resource 'timelogs', 'Timelog'
 
     resource::start = ->
       @$post "#{@$url()}/start"

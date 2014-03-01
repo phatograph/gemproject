@@ -14,8 +14,6 @@ angular.module('app.controllers').controller 'ProjectTaskShowCtrl', [
         .then -> $route.reload()
 
     $scope.deleteTimelog = (timelog) ->
-      Timelog.get(timelog.id)
-        .then (resource) ->
-          resource.delete()
-            .then -> $route.reload()
+      timelog.delete()
+        .then -> $route.reload()
 ]
