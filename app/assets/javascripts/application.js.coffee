@@ -93,6 +93,7 @@ angular.module('app').config [
         project: resolvers.project
         assignments: resolvers.assignments
         my_assignment: resolvers.my_assignment
+        memberships: resolvers.memberships
 
     $routeProvider.when '/projects/:projectId/tasks/:taskId/edit',
       controller: 'ProjectTaskEditCtrl'
@@ -101,6 +102,7 @@ angular.module('app').config [
         project: resolvers.project
         task: resolvers.task
         assignments: resolvers.assignments
+        my_assignment: resolvers.my_assignment
         memberships: resolvers.memberships
 
 
