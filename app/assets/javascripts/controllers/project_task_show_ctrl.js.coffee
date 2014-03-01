@@ -1,9 +1,10 @@
 angular.module('app.controllers').controller 'ProjectTaskShowCtrl', [
-  '$scope', 'task', 'project', '$route', 'assignments', 'Timelog',
-  ($scope, task, project, $route, assignments, Timelog) ->
-    $scope.project     = project.data
-    $scope.task        = task.data
-    $scope.assignments = assignments.data
+  '$scope', 'task', 'project', '$route', 'assignments', 'my_assignment',
+  ($scope, task, project, $route, assignments, my_assignment) ->
+    $scope.project       = project.data
+    $scope.task          = task.data
+    $scope.assignments   = assignments.data
+    $scope.my_assignment = my_assignment.data
 
     $scope.startTimelog = (assignment) ->
       assignment.start()

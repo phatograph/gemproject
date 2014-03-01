@@ -5,6 +5,10 @@ class AssignmentPolicy < ApplicationPolicy
     end
   end
 
+  def mine?
+    user.present?
+  end
+
   def create?
     user.present?
   end

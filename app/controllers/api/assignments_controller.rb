@@ -1,5 +1,8 @@
 class Api::AssignmentsController < Api::BaseController
-  custom_actions :resource => [:start, :stop]
+  custom_actions({
+    :resource => [:start, :stop],
+    :collection => [:mine]
+  })
 
   def index
     task_id = params[:task_id]
@@ -23,13 +26,25 @@ class Api::AssignmentsController < Api::BaseController
     render :json => policy_scope(Assignment.where(query))
   end
 
+  def mine
+    query = { :user => current_user }
+
+    if task_id = params[:task_id]
+      authorize Task.find(params[:task_id]), :show?
+      query[:task_id] = task_id
+    end
+
+    @assignments = @assignments.where(query)
+    render :json => @assignments
+  end
+
   def start
-    resource.start
+    @assignment.start
     render :json => @assignment
   end
 
   def stop
-    resource.stop
+    @assignment.stop
     render :json => @assignment
   end
 

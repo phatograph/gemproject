@@ -8,7 +8,11 @@
 </ol>
 
 <div class="page-header">
-  <h2>Time logs</h2>
+  <h2 class="clearfix">
+    Time logs
+    <a href="#" class="pull-right btn btn-success" ng-show="my_assignment._startable" ng-click="startTimelog(my_assignment)">Start task</a>
+    <a href="#" class="pull-right btn btn-danger" ng-show="my_assignment._stoppable" ng-click="stopTimelog(my_assignment)">Stop task</a>
+  </h2>
 </div>
 
 <div class="row">
@@ -17,8 +21,6 @@
       {{ assignment.user.fullName }}
       <div class="pull-right">
         <span class="btn">{{ assignment.totalTime }}<span ng-show="assignment.running">+</span></span>
-        <a href="#" class="btn btn-success" ng-show="assignment._startable" ng-click="startTimelog(assignment)">Start task</a>
-        <a href="#" class="btn btn-danger" ng-show="assignment._stoppable" ng-click="stopTimelog(assignment)">Stop task</a>
       </div>
     </h3>
     <div class="panel" ng-class="{ 'panel-success': timelog.endedAt != null, 'panel-warning': timelog.endedAt == null }" ng-repeat="timelog in assignment.timelogs | orderBy: 'id'">

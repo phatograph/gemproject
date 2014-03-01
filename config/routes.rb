@@ -10,6 +10,7 @@ Gemproject::Application.routes.draw do
     resources :assignments do
       post :start, :on => :member
       put :stop, :on => :member
+      get :mine, :on => :collection
     end
     resources :timelogs
   end

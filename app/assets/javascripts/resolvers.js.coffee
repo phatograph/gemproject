@@ -76,6 +76,18 @@ resolvers.memberships = [
     deferred.promise
 ]
 
+resolvers.my_assignment = [
+  '$q', 'Assignment', '$route',
+  ($q, Assignment, $route) ->
+    deferred = $q.defer()
+
+    xhr = Assignment.mine $route.current.params.taskId
+    xhr.then (data) -> deferred.resolve status: 200, data: data[0]
+    xhr.catch (error) -> deferred.resolve status: 404, data: error.data
+
+    deferred.promise
+]
+
 resolvers.assignments = [
   '$q', 'Assignment', '$route',
   ($q, Assignment, $route) ->
