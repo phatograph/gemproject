@@ -7,14 +7,6 @@ angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
     $scope.my_assignment = my_assignment.data
     $scope.memberships   = memberships.data
 
-    $scope.startTimelog = (assignment) ->
-      assignment.start()
-        .then -> $route.reload()
-
-    $scope.stopTimelog = (assignment) ->
-      assignment.stop()
-        .then -> $route.reload()
-
     $scope.deleteAssignment = (assignment) ->
       # TODO: apply rules in policy
       assignment.delete()
