@@ -23,14 +23,18 @@
     </h3>
     <div class="panel" ng-class="{ 'panel-success': timelog.endedAt != null, 'panel-warning': timelog.endedAt == null }" ng-repeat="timelog in assignment.timelogs">
       <div class="panel-heading">
-        <strong title="{{ timelog.startedAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a' }}">{{ timelog.startedAt | amCalendar }}</strong>
+        <span title="{{ timelog.startedAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a' }}">{{ timelog.startedAt | amCalendar }}</span>
         <i class="fa fa-long-arrow-right"></i>
-        <strong title="{{ timelog.endedAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a' }}">{{ timelog.endedAt | amCalendar }}</strong>
-        <span class="pull-right">{{ timelog.totalTime }}</span>
+        <span title="{{ timelog.endedAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a' }}">{{ timelog.endedAt | amCalendar }}</span>
+        <div class="pull-right">
+          <strong>{{ timelog.totalTime }}</strong>
+          <a href="#" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
+          <a href="#" ng-really-click="deleteTimelog(timelog)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+        </div>
       </div>
     </div>
     <div class="panel panel-default" ng-hide="assignment.timelogs.length">
-      <div class="panel-body">
+      <div class="panel-heading">
         No time logging yet
       </div>
     </div>

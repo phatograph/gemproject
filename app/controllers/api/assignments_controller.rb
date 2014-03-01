@@ -24,12 +24,12 @@ class Api::AssignmentsController < Api::BaseController
   end
 
   def start
-    @assignment.start
+    resource.start
     render :json => @assignment
   end
 
   def stop
-    @assignment.stop
+    resource.stop
     render :json => @assignment
   end
 

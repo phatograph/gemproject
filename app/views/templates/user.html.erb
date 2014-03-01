@@ -4,6 +4,32 @@
 
 <div class="page-header">
   <h2>
+    <span>Projects</span>
+    <a ng-show="<%= policy(Project).create? %>" ng-href="{{ path('ProjectNewCtrl') }}" class="btn btn-success pull-right">Add new project</a>
+  </h2>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="project in projects | orderBy: 'name'">
+      <td>{{project.name}}</td>
+      <td class="td-control">
+        <a ng-href="{{ path('ProjectTaskIndexCtrl', { projectId: project.id }) }}" ng-show="true" class="btn btn-default btn-xs"><span>{{ project.tasksCount }}</span> <i class="fa fa-bars"></i></a>
+        <a ng-href="{{ path('ProjectEditCtrl', { projectId: project.id }) }}" ng-show="project._updateable" class="btn btn-default btn-xs"><i class="fa fa-user"></i> <i class="fa fa-pencil"></i></a>
+        <a href="#" ng-show="project._deleteable" ng-really-click="deleteProject(project)" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-header">
+  <h2>
     <span>Users</span>
     <a ng-show="<%= policy(User).create? %>" ng-href="{{ path('UserNewCtrl') }}" class="btn btn-success pull-right">Add new user</a>
   </h2>
@@ -34,30 +60,3 @@
     </tr>
   </tbody>
 </table>
-
-<div class="page-header">
-  <h2>
-    <span>Projects</span>
-    <a ng-show="<%= policy(Project).create? %>" ng-href="{{ path('ProjectNewCtrl') }}" class="btn btn-success pull-right">Add new project</a>
-  </h2>
-</div>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>#</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="project in projects | orderBy: 'name'">
-      <td>{{project.name}}</td>
-      <td class="td-control">
-        <a ng-href="{{ path('ProjectTaskIndexCtrl', { projectId: project.id }) }}" ng-show="true" class="btn btn-default btn-xs"><span>{{ project.tasksCount }}</span> <i class="fa fa-bars"></i></a>
-        <a ng-href="{{ path('ProjectEditCtrl', { projectId: project.id }) }}" ng-show="project._updateable" class="btn btn-default btn-xs"><i class="fa fa-user"></i> <i class="fa fa-pencil"></i></a>
-        <a href="#" ng-show="project._deleteable" ng-really-click="deleteProject(project)" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-

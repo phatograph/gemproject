@@ -40,11 +40,15 @@
     <% end %>
     </div>
     <div class="container">
-      <%= yield(:static) %>
+      <div>
+        <%= yield(:static) %>
+      </div>
     </div>
   <% else %>
-      <div ng-view class="container">
-      <%= yield %>
+    <div class="container">
+      <div ng-view>
+        <%= yield %>
+      </div>
     </div>
   <% end %>
   </div>
