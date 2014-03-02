@@ -4,7 +4,7 @@
       {{ assignment.user.fullName }}
       <div class="pull-right">
         <span class="btn" style="padding-right: 0">{{ assignment.totalTime }}<span ng-show="assignment.running">+</span></span>
-        <a class="btn" href="#" ng-show="assignment._destroyableAllTimelogs" ng-really-message="Are you sure to delete all timelogs?" ng-really-click="deleteAllTimelogs(assignment)" title="Delete all timelogs"><i class="fa fa-times"></i></a>
+        <a class="btn" href="#" ng-show="assignment._destroyableAllTimelogs" ng-really-message="Are you sure to delete all timelogs?" ng-really-click="deleteAllTimelogs(assignment)" title="Delete all timelogs"><i class="text-muted fa fa-times"></i></a>
       </div>
     </h4>
     <div class="panel panel-timelog" ng-class="{ 'panel-running': timelog.endedAt == null }" ng-repeat="timelog in assignment.timelogs | orderBy: '-id'">

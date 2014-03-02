@@ -18,7 +18,8 @@ class AssignmentPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present?
+    user.present? &&
+      record.timelogs.count == 0
   end
 
   def start?
