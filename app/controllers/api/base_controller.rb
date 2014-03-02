@@ -1,5 +1,6 @@
 class Api::BaseController < ApplicationController
   serialization_scope :view_context
+  before_filter :authenticate_user!
 
   inherit_resources
   respond_to :json
