@@ -1,8 +1,9 @@
 angular.module('app.controllers').controller 'ProjectNewCtrl', [
-  '$scope', 'Project', '$location',
-  ($scope, Project, $location) ->
-
+  '$scope', 'Project', '$location', 'users'
+  ($scope, Project, $location, users) ->
     $scope.project = new Project()
+    $scope.users = users.data
+
     $scope.saveProject = ->
       $scope.project.create()
         .then (project) ->

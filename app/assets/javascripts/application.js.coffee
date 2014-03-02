@@ -63,6 +63,8 @@ angular.module('app').config [
     $routeProvider.when '/projects/new',
       controller: 'ProjectNewCtrl'
       templateUrl: Routes.template_path('project_form')
+      resolve:
+        users: resolvers.users
 
     $routeProvider.when '/projects/:projectId/edit',
       controller: 'ProjectEditCtrl'

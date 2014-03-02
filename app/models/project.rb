@@ -12,14 +12,16 @@ class Project < ActiveRecord::Base
   end
 
   def member?(user)
-    memberships.find_by_user_id(user.id)
+    memberships.find_by_user_id(user.id) if user
   end
 
   private
 
   def add_owner_as_member
-    unless member?(owner)
-      users << owner
+    if owner
+      unless member?(owner)
+        users << owner
+      end
     end
   end
 end

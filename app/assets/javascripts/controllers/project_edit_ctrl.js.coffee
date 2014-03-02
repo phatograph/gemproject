@@ -1,19 +1,16 @@
 angular.module('app.controllers').controller 'ProjectEditCtrl', [
   '$scope', 'project', '$location', 'users', 'Membership', '$route', 'memberships',
   ($scope, project, $location, users, Membership, $route, memberships) ->
-
     $scope.project = project.data
     $scope.users = users.data
     $scope.memberships = memberships.data
 
     $scope.deleteMember = (membership) ->
-      xhr = Membership.get membership.id
-      xhr.then (membership) ->
-        membership.delete()
-          .then -> $route.reload()
-          .catch (err) ->
-            if err.status is 401
-              $scope.membershipError = "* Please remove user from all task before remove him/her from this project."
+      membership.delete()
+        .then -> $route.reload()
+        .catch (err) ->
+          if err.status is 401
+            $scope.membershipError = "* Please remove user from all task before remove him/her from this project."
 
     $scope.nonMembers = (user) ->
       # Does not belong to the project
