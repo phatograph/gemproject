@@ -1,6 +1,6 @@
-<div ng-controller="TimelogCtrl">
+<div ng-controller="TimelogCtrl" class="timelogs">
   <div ng-repeat="assignment in assignments">
-    <h4 class="timelog clearfix">
+    <h4 class="clearfix">
       {{ assignment.user.fullName }}
       <div class="pull-right">
         <span class="btn" style="padding-right: 0">{{ assignment.totalTime }}<span ng-show="assignment.running">+</span></span>

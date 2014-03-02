@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h2 class="clearfix">
+  <h2 class="clearfix" style="margin-bottom: 0">
     <span ng-hide="task.id">Add new task</span>
     <div ng-show="task.id">
       {{ task.name }}
@@ -19,4 +19,5 @@
       </div>
     </div>
   </h2>
+  <div class="text-muted"><small>Created at {{ task.createdAt | amDateFormat: 'MMM D, YYYY H:mm' }}</small></div>
 </div>

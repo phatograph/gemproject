@@ -34,20 +34,30 @@ div.user-list {
   }
 }
 
-.timelog {
-  line-height: 34px;
-}
+.timelogs {
+  h4 {
+    line-height: 34px;
 
-.panel-timelog {
-  background-color: #f7f7f7;
-  margin-bottom: 3px;
-
-  &.panel-running {
-    background-color: #ccc;
+    a.btn {
+      &:hover {
+        i.text-muted {
+          color: #555;
+        }
+      }
+    }
   }
 
-  .panel-heading {
-    padding: 3px;
+  .panel-timelog {
+    background-color: #f7f7f7;
+    margin-bottom: 3px;
+
+    &.panel-running {
+      background-color: #ccc;
+    }
+
+    .panel-heading {
+      padding: 3px;
+    }
   }
 }
 
