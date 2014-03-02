@@ -27,6 +27,12 @@ class Task < ActiveRecord::Base
     end
   end
 
+  def running?
+    assignments.any? do |assignment|
+      assignment.running?
+    end
+  end
+
   private
 
   def render_content

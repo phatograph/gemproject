@@ -11,6 +11,7 @@ Gemproject::Application.routes.draw do
       post :start, :on => :member
       put :stop, :on => :member
       get :mine, :on => :collection
+      delete :delete_all_timelogs, :on => :member
     end
     resources :timelogs
   end

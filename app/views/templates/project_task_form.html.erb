@@ -24,7 +24,8 @@
         <div class="form-group" ng-show="task.id">
           <label class="col-xs-3 control-label">Status</label>
           <div class="col-xs-9">
-            <select class="form-control" ng-model="task.status" ng-options="status.id as status.name for status in <%= Task.statuses_object.to_json %>"></select>
+            <p ng-show="task.running" class="form-control-static"><em>Please make sure all timelogs are stopped.</em></p>
+            <select ng-hide="task.running" class="form-control" ng-model="task.status" ng-options="status.id as status.name for status in <%= Task.statuses_object.to_json %>"></select>
           </div>
         </div>
         <div class="form-group" ng-show="task.id && assignments.length != memberships.length">

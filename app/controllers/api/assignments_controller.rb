@@ -1,6 +1,6 @@
 class Api::AssignmentsController < Api::BaseController
   custom_actions({
-    :resource => [:start, :stop],
+    :resource => [:start, :stop, :delete_all_timelogs],
     :collection => [:mine]
   })
 
@@ -62,6 +62,11 @@ class Api::AssignmentsController < Api::BaseController
     end
 
     render :json => assignment
+  end
+
+  def delete_all_timelogs
+    @assignment.delete_all_timelogs!
+    render :json => @assignment
   end
 
   protected

@@ -14,6 +14,9 @@ angular.module('app.services').factory 'Assignment', [
     resource::stop = ->
       @$put "#{@$url()}/stop"
 
+    resource::deleteAllTimelogs = ->
+      @$delete "#{@$url()}/delete_all_timelogs"
+
     resource.mine = (taskId) ->
       @$get "#{@$url()}/mine?task_id=#{taskId}",
 

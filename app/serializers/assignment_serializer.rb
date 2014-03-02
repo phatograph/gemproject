@@ -5,7 +5,8 @@ class AssignmentSerializer < ApplicationSerializer
     :running?,
     :total_time,
     :_startable,
-    :_stoppable
+    :_stoppable,
+    :_destroyable_all_timelogs
 
   has_one :user
   has_many :timelogs
@@ -16,5 +17,9 @@ class AssignmentSerializer < ApplicationSerializer
 
   def _stoppable
     policy(object).stop?
+  end
+
+  def _destroyable_all_timelogs
+    policy(object).delete_all_timelogs?
   end
 end

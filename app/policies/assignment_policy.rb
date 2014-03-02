@@ -22,10 +22,21 @@ class AssignmentPolicy < ApplicationPolicy
   end
 
   def start?
-    user.present? && !record.running? && user.id == record.user.id
+    user.present? &&
+      !record.running? &&
+      user.id == record.user.id &&
+      [0, 1].include?(record.task.status)
   end
 
   def stop?
-    user.present? && record.running? && user.id == record.user.id
+    user.present? &&
+      record.running? &&
+      user.id == record.user.id &&
+      [0, 1].include?(record.task.status)
+  end
+
+  def delete_all_timelogs?
+    user.present? &&
+      user.id == record.user.id
   end
 end

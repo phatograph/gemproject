@@ -10,6 +10,12 @@ class Assignment < ActiveRecord::Base
     timelogs.create do |timelog|
       timelog.started_at = DateTime.now
     end
+
+    # Automatically starts a task
+    if task.status != 1
+      task.status = 1
+      task.save
+    end
   end
 
   def stop
@@ -29,5 +35,9 @@ class Assignment < ActiveRecord::Base
     end
 
     Time.at(sum).utc.strftime("%H:%M:%S")
+  end
+
+  def delete_all_timelogs!
+    timelogs.destroy_all
   end
 end

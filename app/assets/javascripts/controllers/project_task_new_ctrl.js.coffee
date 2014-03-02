@@ -7,8 +7,9 @@ angular.module('app.controllers').controller 'ProjectTaskNewCtrl', [
     $scope.saveTask = ->
       $scope.task.create()
         .then (task) ->
-          $location.path $scope.path 'ProjectTaskIndexCtrl',
+          $location.path $scope.path 'ProjectTaskShowCtrl',
             projectId: $scope.project.id
+            taskId: task.id
         .catch (err) ->
           $scope.errors = err.data.errors
 

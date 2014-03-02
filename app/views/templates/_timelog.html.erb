@@ -3,7 +3,8 @@
     <h4 class="timelog clearfix">
       {{ assignment.user.fullName }}
       <div class="pull-right">
-        <span class="btn">{{ assignment.totalTime }}<span ng-show="assignment.running">+</span></span>
+        <span class="btn" style="padding-right: 0">{{ assignment.totalTime }}<span ng-show="assignment.running">+</span></span>
+        <a class="btn" href="#" ng-show="assignment._destroyableAllTimelogs" ng-really-message="Are you sure to delete all timelogs?" ng-really-click="deleteAllTimelogs(assignment)" title="Delete all timelogs"><i class="fa fa-times"></i></a>
       </div>
     </h4>
     <div class="panel panel-timelog" ng-class="{ 'panel-running': timelog.endedAt == null }" ng-repeat="timelog in assignment.timelogs | orderBy: '-id'">
@@ -16,7 +17,7 @@
           <strong class="btn-xs">{{ timelog.totalTime }}</strong>
           <div class="btn-group">
             <a href="#" class="btn-xs dropdown-toggle" data-toggle="dropdown">
-              <i class="text-success fa fa-caret-down"></i>
+              <i class="text-muted fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu" role="menu">
               <li ng-hide="timelog.editting == true"><a href="#" ng-click="timelog.editting = true">Edit</a></li>
