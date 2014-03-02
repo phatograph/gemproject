@@ -3,7 +3,8 @@ class Api::ProjectsController < Api::BaseController
 
   def permitted_params
     params.permit(:project => [
-      :name
+      :name,
+      :owner_id
     ])
   end
 end

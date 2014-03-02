@@ -14,6 +14,7 @@ class MembershipPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present?
+    user.present? &&
+      record.tasks.count == 0
   end
 end

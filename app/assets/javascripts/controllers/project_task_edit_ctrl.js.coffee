@@ -13,7 +13,7 @@ angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
         .then -> $route.reload()
         .catch (err) ->
           if err.status is 401
-            $scope.assignmentError = "* Please delete all user's timelog before remove him/her from this task"
+            $scope.assignmentError = "* Please delete all user's timelog before remove him/her from this task."
 
     $scope.nonAssignees = (membership) ->
       # Does not belong to the task

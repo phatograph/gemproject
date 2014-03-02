@@ -1,5 +1,7 @@
 class ProjectSerializer < ApplicationSerializer
   attributes :id,
              :name,
-             :tasks_count
+             :owner_id
+
+  has_one :owner
 end

@@ -43,11 +43,13 @@ class Task < ActiveRecord::Base
   private
 
   def render_content
-    require 'redcarpet'
-    renderer = Redcarpet::Render::HTML.new
-    extensions = {}  # https://github.com/vmg/redcarpet#and-its-like-really-simple-to-use
-    redcarpet = Redcarpet::Markdown.new(renderer, extensions)
-    self.content_html = redcarpet.render self.content
+    if content_changed?
+      require 'redcarpet'
+      renderer = Redcarpet::Render::HTML.new
+      extensions = {}  # https://github.com/vmg/redcarpet#and-its-like-really-simple-to-use
+      redcarpet = Redcarpet::Markdown.new(renderer, extensions)
+      self.content_html = redcarpet.render self.content
+    end
   end
 
   def check_end_state
