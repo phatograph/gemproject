@@ -17,6 +17,8 @@
     <tr>
       <th>Name</th>
       <th>Assignees</th>
+      <th>Created at</th>
+      <th>Completed at</th>
       <th>Status</th>
       <th>#</th>
     </tr>
@@ -27,6 +29,8 @@
       <td>
         <div ng-repeat="assignee in task.assignees | orderBy: 'name'">{{ assignee.name }}</div>
       </td>
+      <td>{{ task.createdAt | amDateFormat: 'MMM D, YYYY H:mm' }}</td>
+      <td><span ng-show="task.status == 2">{{ task.endedAt | amDateFormat: 'MMM D, YYYY H:mm' }}</span></td>
       <td>{{ task.statusText }}</td>
       <td class="td-control">
         <a ng-href="{{ path('ProjectTaskEditCtrl', { projectId: project.id, taskId: task.id }) }}" ng-show="task._updateable" class="btn btn-default btn-xs"><i class="fa fa-user"></i> <i class="fa fa-pencil"></i></a>

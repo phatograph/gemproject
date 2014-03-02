@@ -5,13 +5,14 @@ class Task < ActiveRecord::Base
   has_many :assignments, :dependent => :destroy
   has_many :users, :through => :assignments
   before_save :render_content
+  before_save :check_end_state
 
   STATUSES = [
-    'New',
-    'In progress',
-    'Completed',
-    'On hold',
-    'Cancelled'
+    'New',         # 0
+    'In progress', # 1
+    'Completed',   # 2
+    'On hold',     # 3
+    'Cancelled'    # 4
   ]
 
   def status_text
@@ -47,5 +48,11 @@ class Task < ActiveRecord::Base
     extensions = {}  # https://github.com/vmg/redcarpet#and-its-like-really-simple-to-use
     redcarpet = Redcarpet::Markdown.new(renderer, extensions)
     self.content_html = redcarpet.render self.content
+  end
+
+  def check_end_state
+    if status_changed? and status == 2  # changed to completed
+      self.ended_at = DateTime.now
+    end
   end
 end
