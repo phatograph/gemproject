@@ -1,6 +1,8 @@
 angular.module('app.controllers').controller 'TimelogCtrl', [
   '$scope', '$route',
   ($scope, $route) ->
+    # Needs `$scope.assignments`
+
     $scope.deleteTimelog = (timelog) ->
       timelog.delete()
         .then -> $route.reload()
