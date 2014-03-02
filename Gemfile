@@ -44,3 +44,9 @@ group :test, :development do
   gem 'debugger'
   gem 'thin'
 end
+
+group :production do
+  gem 'rails_12factor'
+  gem 'unicorn'
+  gem 'sentry-raven'
+end
