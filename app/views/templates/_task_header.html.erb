@@ -1,19 +1,22 @@
 <div class="page-header">
   <h2 class="clearfix">
-    {{ task.name }}
-    <div class="btn-group">
-      <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
-        <i class="text-muted fa fa-caret-down"></i>
-      </a>
-      <ul class="dropdown-menu" role="menu">
-        <li><a ng-href="{{ path('ProjectTaskEditCtrl', { projectId: project.id, taskId: task.id }) }}" ng-show="task._updateable">Edit</a></li>
-        <li><a href="#" ng-show="task._deleteable" ng-really-click="deleteTask()">Delete</a></li>
-      </ul>
-    </div>
-    <small ng-bind="task.statusText"></small>
-    <div ng-controller="TimelogToggleCtrl" class="pull-right">
-      <a href="#" class="btn btn-success" ng-show="my_assignment._startable" ng-click="startTimelog(my_assignment)">Start task</a>
-      <a href="#" class="btn btn-danger" ng-show="my_assignment._stoppable" ng-click="stopTimelog(my_assignment)">Stop task</a>
+    <span ng-hide="task.id">Add new task</span>
+    <div ng-show="task.id">
+      {{ task.name }}
+      <div class="btn-group">
+        <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+          <i class="text-muted fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a ng-href="{{ path('ProjectTaskEditCtrl', { projectId: project.id, taskId: task.id }) }}" ng-show="task._updateable">Edit</a></li>
+          <li><a href="#" ng-show="task._deleteable" ng-really-click="deleteTask()">Delete</a></li>
+        </ul>
+      </div>
+      <small ng-bind="task.statusText"></small>
+      <div ng-controller="TimelogToggleCtrl" class="pull-right">
+        <a href="#" class="btn btn-success" ng-show="my_assignment._startable" ng-click="startTimelog(my_assignment)">Start task</a>
+        <a href="#" class="btn btn-danger" ng-show="my_assignment._stoppable" ng-click="stopTimelog(my_assignment)">Stop task</a>
+      </div>
     </div>
   </h2>
 </div>

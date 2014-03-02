@@ -7,4 +7,6 @@ class TaskSerializer < ApplicationSerializer
     :status_text,
     :content,
     :content_html
+
+  # has_many :assignments
 end

@@ -21,7 +21,7 @@
             <textarea class="form-control" rows="10" ng-model="task.content">{{ task.content }}</textarea>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-show="task.id">
           <label class="col-xs-3 control-label">Status</label>
           <div class="col-xs-9">
             <select class="form-control" ng-model="task.status" ng-options="status.id as status.name for status in <%= Task.statuses_object.to_json %>"></select>
@@ -48,7 +48,8 @@
         <div class="form-group">
           <div class="col-xs-offset-3 col-xs-9">
             <a href="#" ng-click="saveTask()" class="btn btn-success">Save</a>
-            <a ng-href="{{ path('ProjectTaskShowCtrl', { projectId: project.id, taskId: task.id }) }}" class="btn btn-default">Cancel</a>
+            <a ng-show="task.id" ng-href="{{ path('ProjectTaskShowCtrl', { projectId: project.id, taskId: task.id }) }}" class="btn btn-default">Cancel</a>
+            <a ng-hide="task.id" ng-href="{{ path('ProjectTaskIndexCtrl', { projectId: project.id }) }}" class="btn btn-default">Cancel</a>
           </div>
         </div>
       </form>
