@@ -8,7 +8,8 @@ class TaskSerializer < ApplicationSerializer
     :content,
     :content_html,
     :running?,
-    :created_at
+    :created_at,
+    :assignees
 
   # has_many :assignments
 end

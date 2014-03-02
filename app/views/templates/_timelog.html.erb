@@ -1,5 +1,5 @@
 <div ng-controller="TimelogCtrl" class="timelogs">
-  <div ng-repeat="assignment in assignments">
+  <div ng-repeat="assignment in assignments | orderBy: 'user.fullName'">
     <h4 class="clearfix">
       {{ assignment.user.fullName }}
       <div class="pull-right">
@@ -15,13 +15,13 @@
         <em class="btn-xs" ng-hide="timelog.endedAt">Running</em>
         <div class="pull-right">
           <strong class="btn-xs">{{ timelog.totalTime }}</strong>
-          <div class="btn-group">
+          <div class="btn-group" ng-show="timelog._updateable || timelog._deleteable">
             <a href="#" class="btn-xs dropdown-toggle" data-toggle="dropdown">
               <i class="text-muted fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu" role="menu">
-              <li ng-hide="timelog.editting == true"><a href="#" ng-click="timelog.editting = true">Edit</a></li>
-              <li><a href="#" ng-really-click="deleteTimelog(timelog)">Delete</a></li>
+              <li ng-show="timelog._updateable && !timelog.editting"><a href="#" ng-click="timelog.editting = true">Edit</a></li>
+              <li ng-show="timelog._deleteable"><a href="#" ng-really-click="deleteTimelog(timelog)">Delete</a></li>
             </ul>
           </div>
         </div>

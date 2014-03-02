@@ -16,7 +16,7 @@
     <hr />
     <p>
       <strong>Assignees:</strong>
-      <span ng-repeat="assignment in assignments">{{ assignment.user.fullName }}<span ng-hide="$index == assignments.length - 1">, </span></span>
+      <span ng-repeat="assignment in assignments">{{ assignment.user.fullName }}<span ng-hide="$last">, </span></span>
     </p>
   </div>
   <div class="col-xs-4 col-xs-offset-1">

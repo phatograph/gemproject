@@ -33,6 +33,12 @@ class Task < ActiveRecord::Base
     end
   end
 
+  def assignees
+    assignments.map do |assignment|
+      { :name => assignment.user.full_name }
+    end
+  end
+
   private
 
   def render_content

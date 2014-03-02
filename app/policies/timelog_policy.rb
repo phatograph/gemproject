@@ -10,10 +10,10 @@ class TimelogPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present?
+    user.present? && record.assignment.user_id == user.id
   end
 
   def destroy?
-    user.present?
+    user.present? && record.assignment.user_id == user.id
   end
 end
