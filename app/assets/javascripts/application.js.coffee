@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require js-routes
 #= require lodash
+#= require nprogress
 #= require bootstrap
 #= require moment-with-langs
 #= require moment-timezone
@@ -119,6 +120,27 @@ angular.module('app').config [
 angular.module('app').config [
   '$httpProvider',
   ($httpProvider) ->
+
+    # Trigger loader
+    interceptor = ['$q', '$injector', ($q, $injector) ->
+      success = (response) ->
+        $http = $http || $injector.get('$http')
+        if $http.pendingRequests.length < 1
+          NProgress.done();
+        response
+      error = (response) ->
+        $http = $http || $injector.get('$http')
+        if $http.pendingRequests.length < 1
+          NProgress.done();
+        $q.reject(response)
+
+      (promise) ->
+        NProgress.start();
+        promise.then(success, error)
+      ]
+    $httpProvider.responseInterceptors.push(interceptor)
+
+
     csrfToken = angular.element('meta[name=csrf-token]').prop('content')
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = csrfToken
     return

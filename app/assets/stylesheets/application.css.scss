@@ -2,6 +2,7 @@
  *= require bootstrap
  *= require bootstrap-patch
  *= require datetimepicker
+ *= require nprogress
  *= require font-awesome
  *= require_self
  *= require_tree .
@@ -71,137 +72,7 @@ footer {
   }
 }
 
-///////////// FONTS /////////////
-
-@font-face {
-  font-family: 'Droid Serif';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Droid Serif'), local('DroidSerif'), asset-url('DroidSerif.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Droid Serif';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Droid Serif Bold'), local('DroidSerif-Bold'), asset-url('DroidSerif-Bold.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Droid Serif';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Droid Serif Italic'), local('DroidSerif-Italic'), asset-url('DroidSerif-Italic.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Droid Serif';
-  font-style: italic;
-  font-weight: 700;
-  src: local('Droid Serif Bold Italic'), local('DroidSerif-BoldItalic'), asset-url('DroidSerif-BoldItalic.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 200;
-  src: local('Source Code Pro ExtraLight'), local('SourceCodePro-ExtraLight'), asset-url('SourceCodePro-ExtraLight.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Source Code Pro Light'), local('SourceCodePro-Light'), asset-url('SourceCodePro-Light.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Source Code Pro'), local('SourceCodePro-Regular'), asset-url('SourceCodePro-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Source Code Pro Medium'), local('SourceCodePro-Medium'), asset-url('SourceCodePro-Medium.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'), asset-url('SourceCodePro-Semibold.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), asset-url('SourceCodePro-Bold.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 900;
-  src: local('Source Code Pro Black'), local('SourceCodePro-Black'), asset-url('SourceCodePro-Black.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Ubuntu';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Ubuntu Light'), local('Ubuntu-Light'), asset-url('Ubuntu-Light.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Ubuntu';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Ubuntu'), asset-url('Ubuntu.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Ubuntu';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Ubuntu Medium'), local('Ubuntu-Medium'), asset-url('Ubuntu-Medium.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Ubuntu';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Ubuntu Bold'), local('Ubuntu-Bold'), asset-url('Ubuntu-Bold.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Ubuntu';
-  font-style: italic;
-  font-weight: 300;
-  src: local('Ubuntu Light Italic'), local('Ubuntu-LightItalic'), asset-url('Ubuntu-LightItalic.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Ubuntu';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Ubuntu Italic'), local('Ubuntu-Italic'), asset-url('Ubuntu-Italic.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Ubuntu';
-  font-style: italic;
-  font-weight: 500;
-  src: local('Ubuntu Medium Italic'), local('Ubuntu-MediumItalic'), asset-url('Ubuntu-MediumItalic.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Ubuntu';
-  font-style: italic;
-  font-weight: 700;
-  src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), asset-url('Ubuntu-BoldItalic.woff') format('woff');
+#nprogress .bar,
+#nprogress .spinner {
+  z-index: 999999;
 }
