@@ -126,16 +126,16 @@ angular.module('app').config [
       success = (response) ->
         $http = $http || $injector.get('$http')
         if $http.pendingRequests.length < 1
-          NProgress.done();
+          NProgress.done()
         response
       error = (response) ->
         $http = $http || $injector.get('$http')
         if $http.pendingRequests.length < 1
-          NProgress.done();
+          NProgress.done()
         $q.reject(response)
 
       (promise) ->
-        NProgress.start();
+        NProgress.start()
         promise.then(success, error)
       ]
     $httpProvider.responseInterceptors.push(interceptor)

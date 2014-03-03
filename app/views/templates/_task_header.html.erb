@@ -14,12 +14,12 @@
       </div>
       <small ng-bind="task.statusText"></small>
       <div ng-controller="TimelogToggleCtrl" class="pull-right">
-        <a href="#" class="btn btn-success" ng-show="my_assignment._startable" ng-click="startTimelog(my_assignment)">Start task</a>
-        <a href="#" class="btn btn-danger" ng-show="my_assignment._stoppable" ng-click="stopTimelog(my_assignment)">Stop task</a>
+        <button href="#" class="btn btn-success" loading-button type="button" data-loading-text="Loading..." ng-show="my_assignment._startable" ng-loading-click="startTimelog(my_assignment)">Start task</button>
+        <button href="#" class="btn btn-danger"  loading-button type="button" data-loading-text="Loading..." ng-show="my_assignment._stoppable" ng-loading-click="stopTimelog(my_assignment)" >Stop task</button>
       </div>
     </div>
   </h2>
-  <div class="text-muted">
+  <div class="text-muted" ng-show="task.id">
     <small>Created at {{ task.createdAt | amDateFormat: 'MMM D, YYYY H:mm' }}</small>
     <small ng-show="task.endedAt && task.status == 2">| Completed at {{ task.endedAt | amDateFormat: 'MMM D, YYYY H:mm' }}</small>
   </div>
