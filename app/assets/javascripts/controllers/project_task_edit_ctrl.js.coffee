@@ -7,6 +7,8 @@ angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
     $scope.my_assignment = my_assignment.data
     $scope.memberships   = memberships.data
 
+    # Need to do this manually, chaining associated models serialization
+    # seems not to be a good idea in production
     $scope.statusChangeable =  _.any(assignments.data, 'running')
 
     $scope.deleteAssignment = (assignment) ->
