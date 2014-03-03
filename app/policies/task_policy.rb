@@ -16,4 +16,10 @@ class TaskPolicy < ApplicationPolicy
   def destroy?
     user.present?
   end
+
+  def status_changeable?
+    record.assignments.any? do |assignment|
+      assignment.running?
+    end
+  end
 end

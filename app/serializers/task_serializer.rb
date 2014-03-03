@@ -7,10 +7,12 @@ class TaskSerializer < ApplicationSerializer
     :status_text,
     :content,
     :content_html,
-    :running?,
     :created_at,
     :assignees,
-    :ended_at
+    :ended_at,
+    :_status_changeable
 
-  # has_many :assignments
+  def _status_changeable
+    policy(object).status_changeable?
+  end
 end
