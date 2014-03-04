@@ -1,4 +1,11 @@
 <div ng-controller="TimelogCtrl" class="timelogs">
+  <div ng-hide="assignment.length">
+    <div class="panel panel-timelog " ng-hide="assignment.timelogs.length">
+      <div class="panel-heading text-center">
+        <em class="btn-xs">No assignees yet</em>
+      </div>
+    </div>
+  </div>
   <div ng-repeat="assignment in assignments | orderBy: 'user.fullName'">
     <h4 class="clearfix">
       {{ assignment.user.fullName }}
