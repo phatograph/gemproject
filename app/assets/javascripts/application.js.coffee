@@ -6,10 +6,12 @@
 #= require bootstrap
 #= require moment-with-langs
 #= require moment-timezone
+#= require angular-file-upload-html5-shim
 #= require angular
 #= require angular-moment
 #= require angular-route
 #= require angularjs/rails/resource
+#= require angular-file-upload
 #= require datetimepicker
 #= require_self
 #= require_tree .
@@ -24,6 +26,7 @@ angular.module 'app', [
   'rails'
   'angularMoment'
   'ui.bootstrap.datetimepicker'
+  'angularFileUpload'
   'app.controllers'
   'app.directives'
   'app.filters'

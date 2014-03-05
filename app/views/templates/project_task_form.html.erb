@@ -48,6 +48,14 @@
           </div>
         </div>
         <div class="form-group">
+          <label class="col-xs-3 control-label">Attachments</label>
+          <div class="col-xs-9">
+            <div class="form-control-static">
+              <input type="file" ng-file-select="onFileSelect($files)" />
+             </div>
+          </div>
+        </div>
+        <div class="form-group">
           <div class="col-xs-offset-3 col-xs-9">
             <button loading-button ng-loading-click="saveTask()" class="btn btn-success">Save</button>
             <a ng-show="task.id" ng-href="{{ path('ProjectTaskShowCtrl', { projectId: project.id, taskId: task.id }) }}" class="btn btn-default">Cancel</a>

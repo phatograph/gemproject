@@ -17,6 +17,7 @@ Gemproject::Application.routes.draw do
         delete :delete_all_timelogs, :on => :member
       end
       resources :timelogs
+      resources :attachments
     end
 
     # Erb-rendered templates, without layouts.

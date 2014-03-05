@@ -1,6 +1,6 @@
 angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
-  '$scope', '$location', '$route', 'task', 'memberships',
-  ($scope, $location, $route, task, memberships) ->
+  '$scope', '$location', '$route', '$http', '$upload', 'task', 'memberships',
+  ($scope,   $location,   $route,   $http,   $upload,   task,   memberships) ->
     $scope.memberships  = memberships.data
     $scope.task         = task.data
     $scope.project      = $scope.task.project
@@ -8,6 +8,19 @@ angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
     if $scope.task.myAssignment?
       $scope.myAssignment = _.find $scope.assignments, (a) ->
         a.id is $scope.task.myAssignment.id
+
+    $scope.onFileSelect = ($files) ->
+      for file in $files
+        $scope.upload = $upload.upload
+          file: file
+          url: Routes.api_attachments_path format: 'json'
+          headers: $http.defaults.headers.post
+          data:
+            task_id: $scope.task.id
+        $scope.upload.progress (e) ->
+          console.log e.loaded, e.total
+        $scope.upload.success (e) ->
+          console.log 'b'
 
     # Need to do this manually, chaining associated models serialization
     # seems not to be a good idea in production
