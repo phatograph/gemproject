@@ -4,6 +4,7 @@ angular.module('app.directives').directive 'memberDropdown', [
     restrict: 'A'
     link: (scope, elem, attr) ->
       elem.bind 'change', ->
+        elem.prop 'disabled', true
         xhr = new Membership
           projectId: scope.project.id
           userId: scope.membership.id

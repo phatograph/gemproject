@@ -40,7 +40,7 @@
       </div>
       <div class="form-group">
         <div class="col-xs-offset-3 col-xs-9">
-          <button ng-click="saveUser()" type="submit" ng-disabled="!(user.id || (user.password && user.password == user.confirmPassword))" class="btn btn-success">Submit</button>
+          <button loading-button ng-loading-click="saveUser()" ng-disabled="!(user.id || (user.password && user.password == user.confirmPassword))" class="btn btn-success">Save</button>
           <a ng-href="{{ path('UserIndexCtrl') }}" class="btn btn-default">Back</a>
         </div>
       </div>
