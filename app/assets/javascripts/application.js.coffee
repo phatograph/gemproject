@@ -101,11 +101,8 @@ angular.module('app').config [
       controller: 'ProjectTaskEditCtrl'
       templateUrl: Routes.template_path('project_task_form')
       resolve:
-        project: resolvers.project
-        task: resolvers.task
-        assignments: resolvers.assignments
+        task: resolvers.taskEdit
         memberships: resolvers.memberships
-        my_assignment: resolvers.my_assignment
 
     $routeProvider.otherwise redirectTo: '/'
 ]

@@ -1,5 +1,12 @@
 class Api::TasksController < Api::BaseController
   belongs_to :project
+  custom_actions({
+    :resource => [:edit]
+  })
+
+  def edit
+    render :json => @task, :serializer => TaskEditSerializer
+  end
 
   protected
 

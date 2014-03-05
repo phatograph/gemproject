@@ -1,15 +1,15 @@
 angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
-  '$scope', '$location', '$route', 'project', 'task', 'assignments', 'memberships', 'my_assignment',
-  ($scope, $location, $route, project, task, assignments, memberships, my_assignment) ->
-    $scope.project       = project.data
-    $scope.task          = task.data
-    $scope.assignments   = assignments.data
-    $scope.my_assignment = my_assignment.data
+  '$scope', '$location', '$route', 'task', 'memberships',
+  ($scope, $location, $route, task, memberships) ->
+    $scope.task          = task.data.taskEdit
+    $scope.project       = $scope.task.project
+    $scope.assignments   = $scope.task.assignments
+    $scope.my_assignment = _.find $scope.assignments, (x) -> x.id is $scope.task.myAssignment.id
     $scope.memberships   = memberships.data
 
     # Need to do this manually, chaining associated models serialization
     # seems not to be a good idea in production
-    $scope.statusChangeable =  _.any(assignments.data, 'running')
+    $scope.statusChangeable =  _.any($scope.assignments.data, 'running')
 
     $scope.deleteAssignment = (assignment) ->
       # TODO: apply rules in policy
