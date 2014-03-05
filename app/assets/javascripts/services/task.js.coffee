@@ -8,8 +8,8 @@ angular.module('app.services').factory 'Task', [
       serializer: railsSerializer () ->
         @resource 'assignments', 'Assignment'
 
-    resource.edit = (projectId, id) ->
-      @$get "#{@$url(projectId, id)}/edit",
+    resource.detailed = (projectId, id) ->
+      @$get "#{@$url(projectId, id)}/detailed",
 
     return resource
 ]

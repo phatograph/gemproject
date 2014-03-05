@@ -1,11 +1,13 @@
 class Api::TasksController < Api::BaseController
   belongs_to :project
   custom_actions({
-    :resource => [:edit]
+    :resource => [:detailed]
   })
 
-  def edit
-    render :json => @task, :serializer => TaskDetailedSerializer
+  def detailed
+    render :json => @task,
+      :serializer => TaskDetailedSerializer,
+      :root => false
   end
 
   protected

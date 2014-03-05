@@ -1,11 +1,11 @@
 angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
   '$scope', '$location', '$route', 'task', 'memberships',
   ($scope, $location, $route, task, memberships) ->
-    $scope.task          = task.data.taskEdit
-    $scope.project       = $scope.task.project
-    $scope.assignments   = $scope.task.assignments
-    $scope.myAssignment = _.find $scope.assignments, (x) -> x.id is $scope.task.myAssignment.id
-    $scope.memberships   = memberships.data
+    $scope.task         = task.data
+    $scope.project      = $scope.task.project
+    $scope.assignments  = $scope.task.assignments
+    $scope.myAssignment = a for a in $scope.assignments when a.id is $scope.task.myAssignment.id
+    $scope.memberships  = memberships.data
 
     # Need to do this manually, chaining associated models serialization
     # seems not to be a good idea in production

@@ -92,16 +92,13 @@ angular.module('app').config [
       controller: 'ProjectTaskShowCtrl'
       templateUrl: Routes.template_path('project_task_show')
       resolve:
-        project: resolvers.project
-        task: resolvers.task
-        assignments: resolvers.assignments
-        myAssignment: resolvers.myAssignment
+        task: resolvers.taskDetailed
 
     $routeProvider.when '/projects/:projectId/tasks/:taskId/edit',
       controller: 'ProjectTaskEditCtrl'
       templateUrl: Routes.template_path('project_task_form')
       resolve:
-        task: resolvers.taskEdit
+        task: resolvers.taskDetailed
         memberships: resolvers.memberships
 
     $routeProvider.otherwise redirectTo: '/'

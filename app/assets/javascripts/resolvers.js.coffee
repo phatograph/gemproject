@@ -52,12 +52,12 @@ resolvers.task = [
     deferred.promise
 ]
 
-resolvers.taskEdit = [
+resolvers.taskDetailed = [
   '$q', 'Task', '$route',
   ($q, Task, $route) ->
     deferred = $q.defer()
 
-    xhr = Task.edit
+    xhr = Task.detailed
       projectId: $route.current.params.projectId
       id: $route.current.params.taskId
     xhr.then (data) -> deferred.resolve status: 200, data: data

@@ -1,8 +1,8 @@
 angular.module('app.controllers').controller 'ProjectTaskShowCtrl', [
-  '$scope', 'task', 'project', '$route', 'myAssignment', 'assignments'
-  ($scope, task, project, $route, myAssignment, assignments) ->
-    $scope.project      = project.data
+  '$scope', 'task', '$route',
+  ($scope, task, $route) ->
     $scope.task         = task.data
-    $scope.assignments  = assignments.data
-    $scope.myAssignment = myAssignment.data
+    $scope.project      = $scope.task.project
+    $scope.assignments  = $scope.task.assignments
+    $scope.myAssignment = a for a in $scope.assignments when a.id is $scope.task.myAssignment.id
 ]

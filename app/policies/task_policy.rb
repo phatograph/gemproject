@@ -5,6 +5,10 @@ class TaskPolicy < ApplicationPolicy
     end
   end
 
+  def detailed?
+    show?
+  end
+
   def create?
     user.present?
   end
