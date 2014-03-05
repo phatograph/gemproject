@@ -4,7 +4,7 @@ angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
     $scope.task          = task.data.taskEdit
     $scope.project       = $scope.task.project
     $scope.assignments   = $scope.task.assignments
-    $scope.my_assignment = _.find $scope.assignments, (x) -> x.id is $scope.task.myAssignment.id
+    $scope.myAssignment = _.find $scope.assignments, (x) -> x.id is $scope.task.myAssignment.id
     $scope.memberships   = memberships.data
 
     # Need to do this manually, chaining associated models serialization

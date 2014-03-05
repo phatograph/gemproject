@@ -90,7 +90,7 @@ resolvers.memberships = [
     deferred.promise
 ]
 
-resolvers.my_assignment = [
+resolvers.myAssignment = [
   '$q', 'Assignment', '$route',
   ($q, Assignment, $route) ->
     deferred = $q.defer()
