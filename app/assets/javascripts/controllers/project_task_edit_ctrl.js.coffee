@@ -11,7 +11,7 @@ angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
 
     # Need to do this manually, chaining associated models serialization
     # seems not to be a good idea in production
-    $scope.statusChangeable =  _.any($scope.assignments.data, 'running')
+    $scope.statusChangeable =  _.any $scope.assignments, (a) -> a.running
 
     $scope.deleteAssignment = (assignment) ->
       # TODO: apply rules in policy
