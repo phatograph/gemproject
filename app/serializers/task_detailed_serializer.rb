@@ -1,4 +1,4 @@
-class TaskEditSerializer < ApplicationSerializer
+class TaskDetailedSerializer < ApplicationSerializer
   attributes :id,
     :name,
     :body,

@@ -5,7 +5,7 @@ class Api::TasksController < Api::BaseController
   })
 
   def edit
-    render :json => @task, :serializer => TaskEditSerializer
+    render :json => @task, :serializer => TaskDetailedSerializer
   end
 
   protected
