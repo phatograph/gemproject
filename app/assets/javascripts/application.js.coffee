@@ -92,20 +92,14 @@ angular.module('app').config [
       controller: 'ProjectTaskShowCtrl'
       templateUrl: Routes.template_path('project_task_show')
       resolve:
-        project: resolvers.project
-        task: resolvers.task
-        assignments: resolvers.assignments
-        my_assignment: resolvers.my_assignment
+        task: resolvers.taskDetailed
 
     $routeProvider.when '/projects/:projectId/tasks/:taskId/edit',
       controller: 'ProjectTaskEditCtrl'
       templateUrl: Routes.template_path('project_task_form')
       resolve:
-        project: resolvers.project
-        task: resolvers.task
-        assignments: resolvers.assignments
+        task: resolvers.taskDetailed
         memberships: resolvers.memberships
-        my_assignment: resolvers.my_assignment
 
     $routeProvider.otherwise redirectTo: '/'
 ]
@@ -127,19 +121,22 @@ angular.module('app').config [
         $http = $http || $injector.get('$http')
         if $http.pendingRequests.length < 1
           NProgress.done()
+          $('[loading-button]').button('reset')
         response
+
       error = (response) ->
         $http = $http || $injector.get('$http')
         if $http.pendingRequests.length < 1
           NProgress.done()
+          $('[loading-button]').button('reset')
         $q.reject(response)
 
       (promise) ->
         NProgress.start()
         promise.then(success, error)
       ]
-    $httpProvider.responseInterceptors.push(interceptor)
 
+    $httpProvider.responseInterceptors.push(interceptor)
 
     csrfToken = angular.element('meta[name=csrf-token]').prop('content')
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = csrfToken

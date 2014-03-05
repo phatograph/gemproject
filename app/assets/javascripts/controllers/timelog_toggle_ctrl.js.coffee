@@ -1,7 +1,7 @@
 angular.module('app.controllers').controller 'TimelogToggleCtrl', [
   '$scope', '$route',
   ($scope, $route) ->
-    # Needs `$scope.my_assignment`
+    # Needs `$scope.myAssignment`
 
     $scope.startTimelog = (assignment) ->
       assignment.start()

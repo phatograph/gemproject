@@ -14,8 +14,8 @@
       </div>
       <small ng-bind="task.statusText"></small>
       <div ng-controller="TimelogToggleCtrl" class="pull-right">
-        <button href="#" class="btn btn-success" loading-button type="button" data-loading-text="Loading..." ng-show="my_assignment._startable" ng-loading-click="startTimelog(my_assignment)">Start task</button>
-        <button href="#" class="btn btn-danger"  loading-button type="button" data-loading-text="Loading..." ng-show="my_assignment._stoppable" ng-loading-click="stopTimelog(my_assignment)" >Stop task</button>
+        <button href="#" class="btn btn-success" loading-button ng-show="myAssignment._startable" ng-loading-click="startTimelog(myAssignment)">Start task</button>
+        <button href="#" class="btn btn-danger"  loading-button ng-show="myAssignment._stoppable" ng-loading-click="stopTimelog(myAssignment)" >Stop task</button>
       </div>
     </div>
   </h2>

@@ -21,4 +21,4 @@ angular.module('app.services').factory 'Assignment', [
       @$get "#{@$url()}/mine?task_id=#{taskId}",
 
     return resource
-  ]
+]

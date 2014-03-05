@@ -4,6 +4,7 @@ angular.module('app.directives').directive 'assignmentDropdown', [
     restrict: 'A'
     link: (scope, elem, attr) ->
       elem.bind 'change', ->
+        elem.prop 'disabled', true
         xhr = new Assignment
           taskId: scope.task.id
           userId: scope.assignment.userId  # membership object
