@@ -14,6 +14,7 @@ class TaskDetailedSerializer < ApplicationSerializer
 
   has_one :project
   has_many :assignments
+  has_many :attachments
 
   def my_assignment
     object.assignments.where(:user => current_user).first

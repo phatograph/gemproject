@@ -4,6 +4,8 @@ class Task < ActiveRecord::Base
   belongs_to :project
   has_many :assignments, :dependent => :destroy
   has_many :users, :through => :assignments
+  has_many :attachments, :as => :attachable
+
   before_save :render_content
   before_save :check_end_state
 

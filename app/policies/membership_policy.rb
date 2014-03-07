@@ -15,6 +15,6 @@ class MembershipPolicy < ApplicationPolicy
 
   def destroy?
     user.present? &&
-      record.tasks.count == 0
+      record.tasks.where(:project => record.project).count == 0
   end
 end

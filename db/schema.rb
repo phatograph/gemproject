@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305170122) do
+ActiveRecord::Schema.define(version: 20140307113214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20140305170122) do
     t.string   "attachment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
   end
 
   create_table "memberships", force: true do |t|
