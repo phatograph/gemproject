@@ -40,6 +40,16 @@ class Task < ActiveRecord::Base
     end
   end
 
+  def total_time
+    sum = assignments.to_a.sum do |assignment|
+      assignment.timelogs.stopped.to_a.sum do |timelog|
+        timelog.ended_at - timelog.started_at
+      end
+    end
+
+    Time.at(sum).utc.strftime("%H:%M:%S")
+  end
+
   private
 
   def render_content

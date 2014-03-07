@@ -10,7 +10,8 @@ class TaskDetailedSerializer < ApplicationSerializer
     :created_at,
     :assignees,
     :ended_at,
-    :my_assignment
+    :my_assignment,
+    :total_time
 
   has_one :project
   has_many :assignments

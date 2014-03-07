@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-      <div class="form-group" ng-show="project.id && memberships.length != users.length">
+      <div class="form-group" ng-show="project.id && memberships.length != <%= User.count %>"> <%# All user, without policy  %>
         <label class="col-xs-3 control-label">Add members</label>
         <div class="col-xs-9">
           <select class="form-control" member-dropdown ng-model="membership" ng-options="user.fullName for user in users | orderBy: 'fullName' | filter: nonMembers"></select>
