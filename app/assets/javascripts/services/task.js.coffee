@@ -7,6 +7,7 @@ angular.module('app.services').factory 'Task', [
       name: 'task'
       serializer: railsSerializer () ->
         @resource 'assignments', 'Assignment'
+        @resource 'attachments', 'Attachment'
 
     resource.detailed = (projectId, id) ->
       @$get "#{@$url(projectId, id)}/detailed",

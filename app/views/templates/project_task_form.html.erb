@@ -51,7 +51,7 @@
           <label class="col-xs-3 control-label">Attachments</label>
           <div class="col-xs-9">
             <div class="form-control-static">
-              <input multiple type="file" ng-file-select="onFileSelect($files)" />
+              <input multiple type="file" ng-file-select="uploadAttachment($files)" />
             </div>
           </div>
         </div>
@@ -60,6 +60,7 @@
             <div class="form-control-static">
               <p ng-repeat="attachment in attachments">
                 <img ng-src="{{ attachment.thumbUrl }}" />
+                <a href="#" ng-really-click="deleteAttachment(attachment)" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
               </p>
             </div>
           </div>

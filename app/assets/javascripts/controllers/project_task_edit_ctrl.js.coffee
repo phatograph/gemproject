@@ -1,6 +1,6 @@
 angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
-  '$scope', '$location', '$route', '$http', '$upload', 'task', 'memberships',
-  ($scope,   $location,   $route,   $http,   $upload,   task,   memberships) ->
+  '$scope', '$location', '$route', '$http', '$upload', 'task', 'memberships', 'Attachment'
+  ($scope,   $location,   $route,   $http,   $upload,   task,   memberships,   Attachment) ->
     $scope.memberships = memberships.data
     $scope.task        = task.data
     $scope.project     = $scope.task.project
@@ -9,23 +9,6 @@ angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
     if $scope.task.myAssignment?
       $scope.myAssignment = _.find $scope.assignments, (a) ->
         a.id is $scope.task.myAssignment.id
-
-
-    $scope.onFileSelect = ($files) ->
-      for file in $files
-        $scope.upload = $upload.upload
-          file: file
-          url: Routes.api_attachments_path
-            format: 'json'
-            attachableType: 'task'
-            attachableId: $scope.task.id
-          headers: $http.defaults.headers.post
-          data:
-            task_id: $scope.task.id
-        $scope.upload.progress (e) ->
-          # console.log e.loaded, e.total
-        $scope.upload.success (data) ->
-          # $scope.attachments.push data
 
     # Need to do this manually, chaining associated models serialization
     # seems not to be a good idea in production
@@ -56,4 +39,26 @@ angular.module('app.controllers').controller 'ProjectTaskEditCtrl', [
             $scope.flash =
               type: 'danger'
               message: "#{err.data._message} (#{err.status})"
+
+    $scope.uploadAttachment = ($files) ->
+      for file in $files
+        $scope.upload = $upload.upload
+          file: file
+          url: Routes.api_attachments_path
+            format: 'json'
+            attachableType: 'task'
+            attachableId: $scope.task.id
+          headers: $http.defaults.headers.post
+          data:
+            task_id: $scope.task.id
+        $scope.upload.progress (e) ->
+          # console.log e.loaded, e.total
+        $scope.upload.success (data) ->
+          Attachment.get(id: data.attachment.id)
+           .then (attachment) ->
+              $scope.attachments.push attachment
+
+    $scope.deleteAttachment = (attachment) ->
+      attachment.delete()
+        .then -> $route.reload()
 ]
