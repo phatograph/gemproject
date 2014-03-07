@@ -14,6 +14,9 @@
     <tr>
       <th>Name</th>
       <th>Owner</th>
+      <th>Requester</th>
+      <th>Requester Dept.</th>
+      <th>Status</th>
       <th>#</th>
     </tr>
   </thead>
@@ -21,6 +24,9 @@
     <tr ng-repeat="project in projects | orderBy: 'name'">
       <td><a ng-href="{{ path('ProjectTaskIndexCtrl', { projectId: project.id }) }}">{{ project.name }}</a></td>
       <td>{{ project.owner.fullName }}</td>
+      <td>{{ project.requesterName }}</td>
+      <td>{{ project.requesterDepartment }}</td>
+      <td>{{ project.statusText }}</td>
       <td class="td-control">
         <a ng-href="{{ path('ProjectEditCtrl', { projectId: project.id }) }}" ng-show="project._updateable" class="btn btn-default btn-xs"><i class="fa fa-user"></i> <i class="fa fa-pencil"></i></a>
         <a href="#" ng-show="project._deleteable" ng-really-click="deleteProject(project)" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>

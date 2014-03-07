@@ -1,8 +1,11 @@
 angular.module('app.controllers').controller 'ProjectNewCtrl', [
-  '$scope', 'Project', '$location', 'users'
-  ($scope, Project, $location, users) ->
+  '$scope', '$location', 'users', 'Project', 'projects'
+  ($scope,   $location,   users,   Project,   projects) ->
     $scope.project = new Project()
     $scope.users = users.data
+    $scope.requesterNames = (p.requesterName for p in projects.data)
+    $scope.requesterDepts = (p.requesterDepartment for p in projects.data)
+    console.log $scope.requesters
 
     $scope.saveProject = ->
       $scope.project.create()

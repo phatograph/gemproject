@@ -11,6 +11,7 @@
 #= require angular-route
 #= require angularjs/rails/resource
 #= require datetimepicker
+#= require ui-bootstrap-tpls-0.10.0
 #= require_self
 #= require_tree .
 
@@ -24,6 +25,7 @@ angular.module 'app', [
   'rails'
   'angularMoment'
   'ui.bootstrap.datetimepicker'
+  'ui.bootstrap'
   'app.controllers'
   'app.directives'
   'app.filters'
@@ -66,6 +68,7 @@ angular.module('app').config [
       templateUrl: Routes.template_path('project_form')
       resolve:
         users: resolvers.users
+        projects: resolvers.projects
 
     $routeProvider.when '/projects/:projectId/edit',
       controller: 'ProjectEditCtrl'
