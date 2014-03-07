@@ -5,6 +5,10 @@ class ProjectPolicy < ApplicationPolicy
     end
   end
 
+  def by_requester_department?
+    index?
+  end
+
   def create?
     user.present?
   end

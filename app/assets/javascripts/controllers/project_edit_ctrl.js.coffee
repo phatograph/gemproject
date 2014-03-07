@@ -1,9 +1,11 @@
 angular.module('app.controllers').controller 'ProjectEditCtrl', [
-  '$scope', 'project', '$location', 'users', 'Membership', '$route', 'memberships',
-  ($scope, project, $location, users, Membership, $route, memberships) ->
+  '$scope', 'project', '$location', 'users', 'Membership', '$route', 'memberships', 'projects'
+  ($scope,   project,   $location,   users,   Membership,   $route,   memberships,   projects) ->
     $scope.project = project.data
     $scope.users = users.data
     $scope.memberships = memberships.data
+    $scope.requesterNames = _.uniq(p.requesterName for p in projects.data when p.requesterName?) or []
+    $scope.requesterDepts = _.uniq(p.requesterDepartment for p in projects.data when p.requesterDepartment?) or []
 
     $scope.deleteMember = (membership) ->
       membership.delete()

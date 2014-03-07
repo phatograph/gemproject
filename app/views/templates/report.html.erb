@@ -1,0 +1,60 @@
+<ol class="breadcrumb">
+  <li class="active">Reports</li>
+</ol>
+
+<div class="well">
+  <div class="form-horizontal">
+    <div class="form-group">
+      <div class="col-xs-6">
+        <div class="row">
+          <label class="col-xs-3 control-label">From</label>
+          <div class="col-xs-9">
+            <div class="dropdown">
+              <div class="dropdown-toggle" id="startedAt" data-toggle="dropdown">
+                <div class="input-group">
+                  <input type="text" class="form-control" value="{{ startedAt | amDateFormat: 'MMM D, YYYY' }}">
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                </div>
+              </div>
+              <ul class="dropdown-menu">
+                <datetimepicker data-ng-model="startedAt" data-datetimepicker-config="{ dropdownSelector: '#startedAt', startView: 'day', minView: 'day' }"/>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="row">
+          <label class="col-xs-1 control-label">To</label>
+          <div class="col-xs-9">
+            <div class="dropdown">
+              <div class="dropdown-toggle" id="endedAt" data-toggle="dropdown">
+                <div class="input-group">
+                  <input type="text" class="form-control" value="{{ endedAt | amDateFormat: 'MMM D, YYYY' }}">
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                </div>
+              </div>
+              <ul class="dropdown-menu">
+                <datetimepicker data-ng-model="endedAt" data-datetimepicker-config="{ dropdownSelector: '#endedAt', startView: 'day', minView: 'day' }"/>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-repeat="(department, projects) in departments">
+  <div class="page-header">
+    <h3>{{ department || 'Other' }}</h3>
+  </div>
+  <div ng-repeat="project in projects">
+    <div>
+      <h5>{{ project.name }}</h5>
+      <div class="text-muted">
+        <small>{{ project.createdAt }}</small>
+        <small ng-show="project.endedAt">| {{ project.endedAt }}</small>
+      </div>
+    </div>
+  </div>
+</div>

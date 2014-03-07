@@ -53,6 +53,10 @@ angular.module('app').config [
         users: resolvers.users
         projects: resolvers.projects
 
+    $routeProvider.when '/reports',
+      controller: 'ReportIndexCtrl'
+      templateUrl: Routes.template_path('report')
+
     $routeProvider.when '/users/new',
       controller: 'UserNewCtrl'
       templateUrl: Routes.template_path('user_form')
@@ -77,6 +81,7 @@ angular.module('app').config [
         project: resolvers.project
         users: resolvers.users
         memberships: resolvers.memberships
+        projects: resolvers.projects
 
     $routeProvider.when '/projects/:projectId/tasks',
       controller: 'ProjectTaskIndexCtrl'

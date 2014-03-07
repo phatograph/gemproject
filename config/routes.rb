@@ -5,6 +5,8 @@ Gemproject::Application.routes.draw do
     namespace :api do
       resources :users
       resources :projects do
+        get :by_requester_department, :on => :collection
+
         resources :tasks do
           get :detailed, :on => :member
         end
