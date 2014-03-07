@@ -7,7 +7,8 @@ class Api::ProjectsController < Api::BaseController
       :owner_id,
       :requester_name,
       :requester_department,
-      :status
+      :status,
+      :ended_at
     ])
   end
 end

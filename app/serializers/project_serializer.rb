@@ -5,7 +5,8 @@ class ProjectSerializer < ApplicationSerializer
              :requester_name,
              :requester_department,
              :status,
-             :status_text
+             :status_text,
+             :ended_at
 
   has_one :owner
 end

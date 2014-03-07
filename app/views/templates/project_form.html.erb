@@ -39,6 +39,22 @@
           <select class="form-control" ng-model="project.status" ng-options="status.id as status.name for status in <%= Project.statuses_object.to_json %>"></select>
         </div>
       </div>
+      <div class="form-group">
+        <label class="col-xs-3 control-label">Completed at</label>
+        <div class="col-xs-9">
+          <div class="dropdown">
+            <div class="dropdown-toggle" id="endedAt" data-toggle="dropdown">
+              <div class="input-group">
+                <input type="text" class="form-control" value="{{ project.endedAt | amDateFormat: 'MMM D, YYYY H:mm' }}">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+            <ul class="dropdown-menu">
+              <datetimepicker data-ng-model="project.endedAt" data-datetimepicker-config="{ dropdownSelector: '#endedAt' }"/>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div class="form-group" ng-show="project.id && memberships.length != users.length">
         <label class="col-xs-3 control-label">Add members</label>
         <div class="col-xs-9">
