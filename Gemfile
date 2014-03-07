@@ -19,6 +19,7 @@ gem 'active_model_serializers'
 gem 'font-awesome-rails'
 gem 'redcarpet'
 gem 'mini_magick'
+gem 'fog'
 gem 'carrierwave'
 
 gem 'uglifier', '>= 1.3.0'
