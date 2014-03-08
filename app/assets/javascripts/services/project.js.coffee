@@ -6,8 +6,8 @@ angular.module('app.services').factory 'Project', [
       url: Routes.api_project_path '{{ id }}'
       name: 'project'
 
-    resource.byRequesterDepartment = ->
-      @$get "#{@$url()}/by_requester_department",
+    resource.byRequesterDepartment = (query) ->
+      @$get "#{@$url()}/by_requester_department", query
 
     return resource
   ]

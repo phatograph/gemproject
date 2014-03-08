@@ -45,12 +45,12 @@
           <div class="dropdown">
             <div class="dropdown-toggle" id="endedAt" data-toggle="dropdown">
               <div class="input-group">
-                <input type="text" class="form-control" value="{{ project.endedAt | amDateFormat: 'MMM D, YYYY H:mm' }}">
+                <input type="text" class="form-control" value="{{ project.endedAt | amDateFormat: 'MMM D, YYYY' }}">
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
               </div>
             </div>
             <ul class="dropdown-menu">
-              <datetimepicker data-ng-model="project.endedAt" data-datetimepicker-config="{ dropdownSelector: '#endedAt' }"/>
+              <datetimepicker data-ng-model="project.endedAt" data-datetimepicker-config="{ dropdownSelector: '#endedAt', startView: 'day', minView: 'day' }"/>
             </ul>
           </div>
         </div>

@@ -4,7 +4,25 @@ class Api::ProjectsController < Api::BaseController
   })
 
   def by_requester_department
-    render :json => @projects.group_by(&:requester_department)
+    started_at = begin
+                   DateTime.strptime params[:started_at], '%s'
+                 rescue
+                   DateTime.now.beginning_of_week
+                 end
+
+    ended_at   = begin
+                   DateTime.strptime params[:ended_at], '%s'
+                 rescue
+                   DateTime.now.end_of_week
+                 end
+
+    @projects  = @projects.where(:ended_at => [started_at..ended_at])
+
+    render :json => {
+      :started_at => started_at,
+      :ended_at => ended_at,
+      :departments => @projects.group_by(&:requester_department)
+    }
   end
 
   protected

@@ -17,6 +17,7 @@
       <th>Requester</th>
       <th>Requester Dept.</th>
       <th>Status</th>
+      <th>Completed</th>
       <th>#</th>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
       <td>{{ project.requesterName }}</td>
       <td>{{ project.requesterDepartment }}</td>
       <td>{{ project.statusText }}</td>
+      <td>{{ project.endedAt | amDateFormat: 'MMM D, YYYY' }}</td>
       <td class="td-control">
         <a ng-href="{{ path('ProjectEditCtrl', { projectId: project.id }) }}" ng-show="project._updateable" class="btn btn-default btn-xs"><i class="fa fa-user"></i> <i class="fa fa-pencil"></i></a>
         <a href="#" ng-show="project._deleteable" ng-really-click="deleteProject(project)" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>
