@@ -31,6 +31,8 @@ GEM
     angularjs-rails-resource (1.0.1)
     arel (4.0.2)
     atomic (1.1.14)
+    autoprefixer-rails (0.8.20131104)
+      execjs
     bcrypt-ruby (3.1.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -225,6 +227,7 @@ DEPENDENCIES
   active_model_serializers
   angularjs-rails
   angularjs-rails-resource
+  autoprefixer-rails
   coffee-rails (~> 4.0.0)
   compass-rails (~> 1.1.2)
   debugger

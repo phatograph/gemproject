@@ -62,6 +62,18 @@ div.user-list {
   }
 }
 
+.g-panel-filter {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+  .form-group {
+    &:first-child {
+      margin-top: 15px;
+    }
+  }
+}
+
 footer {
   text-align: center;
   padding: 30px 0 50px;

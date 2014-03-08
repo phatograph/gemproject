@@ -1,49 +1,107 @@
 <ol class="breadcrumb">
   <li class="active">Reports</li>
 </ol>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Started date</a></li>
+  <li><a href="#">Completed date</a></li>
+</ul>
 
-<div class="well">
-  <div class="form-horizontal">
-    <div class="form-group">
-      <div class="col-xs-6">
-        <div class="row">
-          <label class="col-xs-4 control-label">Completed within</label>
-          <div class="col-xs-8">
-            <div class="dropdown">
-              <div class="dropdown-toggle" id="startedAt" data-toggle="dropdown">
-                <div class="input-group">
-                  <input type="text" class="form-control" value="{{ startedAt | amDateFormat: 'MMM D, YYYY' }}">
-                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+<div class="panel panel-default g-panel-filter">
+  <div class="panel-body">
+    <div class="tab-content">
+      <div class="tab-pane active">
+        <div class="form-horizontal">
+          <div class="form-group">
+            <div class="col-xs-6">
+              <div class="row">
+                <label class="col-xs-4 control-label">Started within</label>
+                <div class="col-xs-8">
+                  <div class="dropdown">
+                    <div class="dropdown-toggle" id="startedAtStart" data-toggle="dropdown">
+                      <div class="input-group">
+                        <input type="text" class="form-control" value="{{ startedAtStart | amDateFormat: 'MMM D, YYYY' }}">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                      </div>
+                    </div>
+                    <ul class="dropdown-menu">
+                      <datetimepicker on-set-time="setStartedAtStart" data-ng-model="startedAtStart" data-datetimepicker-config="{ dropdownSelector: '#startedAtStart', startView: 'day', minView: 'day' }"/>
+                    </ul>
+                  </div>
                 </div>
               </div>
-              <ul class="dropdown-menu">
-                <datetimepicker on-set-time="setStartedAt" data-ng-model="startedAt" data-datetimepicker-config="{ dropdownSelector: '#startedAt', startView: 'day', minView: 'day' }"/>
-              </ul>
+            </div>
+            <div class="col-xs-6">
+              <div class="row">
+                <label class="col-xs-1 control-label">To</label>
+                <div class="col-xs-9">
+                  <div class="dropdown">
+                    <div class="dropdown-toggle" id="startedAtEnd" data-toggle="dropdown">
+                      <div class="input-group">
+                        <input type="text" class="form-control" value="{{ startedAtEnd | amDateFormat: 'MMM D, YYYY' }}">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                      </div>
+                    </div>
+                    <ul class="dropdown-menu">
+                      <datetimepicker on-set-time="setStartedAtEnd" data-ng-model="startedAtEnd" data-datetimepicker-config="{ dropdownSelector: '#startedAtEnd', startView: 'day', minView: 'day' }"/>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-xs-6">
-        <div class="row">
-          <label class="col-xs-1 control-label">To</label>
-          <div class="col-xs-9">
-            <div class="dropdown">
-              <div class="dropdown-toggle" id="endedAt" data-toggle="dropdown">
-                <div class="input-group">
-                  <input type="text" class="form-control" value="{{ endedAt | amDateFormat: 'MMM D, YYYY' }}">
-                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+      <div class="tab-pane">
+        <div class="form-horizontal">
+          <div class="form-group">
+            <div class="col-xs-6">
+              <div class="row">
+                <label class="col-xs-4 control-label">Completed within</label>
+                <div class="col-xs-8">
+                  <div class="dropdown">
+                    <div class="dropdown-toggle" id="endedAtStart" data-toggle="dropdown">
+                      <div class="input-group">
+                        <input type="text" class="form-control" value="{{ endedAtStart | amDateFormat: 'MMM D, YYYY' }}">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                      </div>
+                    </div>
+                    <ul class="dropdown-menu">
+                      <datetimepicker on-set-time="setEndedAtStart" data-ng-model="endedAtStart" data-datetimepicker-config="{ dropdownSelector: '#endedAtStart', startView: 'day', minView: 'day' }"/>
+                    </ul>
+                  </div>
                 </div>
               </div>
-              <ul class="dropdown-menu">
-                <datetimepicker on-set-time="setEndedAt" data-ng-model="endedAt" data-datetimepicker-config="{ dropdownSelector: '#endedAt', startView: 'day', minView: 'day' }"/>
-              </ul>
+            </div>
+            <div class="col-xs-6">
+              <div class="row">
+                <label class="col-xs-1 control-label">To</label>
+                <div class="col-xs-9">
+                  <div class="dropdown">
+                    <div class="dropdown-toggle" id="endedAtEnd" data-toggle="dropdown">
+                      <div class="input-group">
+                        <input type="text" class="form-control" value="{{ endedAtEnd | amDateFormat: 'MMM D, YYYY' }}">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                      </div>
+                    </div>
+                    <ul class="dropdown-menu">
+                      <datetimepicker on-set-time="setEndedAtEnd" data-ng-model="endedAtEnd" data-datetimepicker-config="{ dropdownSelector: '#endedAtEnd', startView: 'day', minView: 'day' }"/>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="text-center" ng-show="false">
+      <a class="btn btn-default" href="#">Today</a>
+      <a class="btn btn-default" href="#">This week</a>
+      <a class="btn btn-default" href="#">This month</a>
+    </div>
   </div>
 </div>
+
 <div ng-repeat="(department, projects) in departments">
   <div class="page-header">
     <h3>{{ department || 'Other' }}</h3>
