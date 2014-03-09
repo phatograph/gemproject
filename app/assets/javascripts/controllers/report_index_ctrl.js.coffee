@@ -3,27 +3,28 @@ angular.module('app.controllers').controller 'ReportIndexCtrl', [
   ($scope,   $route,   $location,   $filter,   Project) ->
     Project.byRequesterDepartment(
       mode: $route.current.params.mode
-      startedAtStart: $route.current.params.startedAtStart
-      startedAtEnd: $route.current.params.startedAtEnd
+      startedAt: $route.current.params.startedAt
+      endedAt: $route.current.params.endedAt
     ).then (data) ->
       $scope.mode = data.mode
-      $scope.startedAtStart = data.startedAtStart
-      $scope.startedAtEnd = data.startedAtEnd
+      $scope.startedAt = data.startedAt
+      $scope.endedAt = data.endedAt
       $scope.departments = data.departments
 
-    $scope.setStartedAtStart = (time) ->
-      $scope.setTime time, new Date($scope.startedAtEnd)
+    $scope.setStartedAt = (time) ->
+      $scope.setTime time, new Date($scope.endedAt)
 
-    $scope.setStartedAtEnd = (time) ->
-      $scope.setTime new Date($scope.startedAtStart), time
+    $scope.setEndedAt = (time) ->
+      nextDay = +(moment.duration(+time).add(1439, 'm'))
+      $scope.setTime new Date($scope.startedAt), nextDay
 
     $scope.setMode = (mode) ->
       $scope.mode = mode
-      $scope.setTime new Date($scope.startedAtStart), new Date($scope.startedAtEnd)
+      $scope.setTime()
 
     $scope.setTime = (start, end) ->
       $location.search
         mode: $scope.mode
-        startedAtStart: +(start / 1000)
-        startedAtEnd: +(end / 1000)
+        startedAt: if start? then +(start / 1000) else ''
+        endedAt: if end? then +(end / 1000) else ''
 ]

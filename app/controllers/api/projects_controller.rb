@@ -4,19 +4,19 @@ class Api::ProjectsController < Api::BaseController
   })
 
   def by_requester_department
-    started_at_start = begin
-      DateTime.strptime params[:started_at_start], '%s'
+    started_at = begin
+      DateTime.strptime params[:started_at], '%s'
     rescue
       DateTime.now.beginning_of_week
     end
 
-    started_at_end = begin
-      DateTime.strptime params[:started_at_end], '%s'
+    ended_at = begin
+      DateTime.strptime params[:ended_at], '%s'
     rescue
       DateTime.now.end_of_week
     end
 
-    range = [started_at_start..started_at_end]
+    range = [started_at..ended_at]
     mode = params[:mode].present? ? params[:mode] : 'started'
 
     query = case mode
@@ -28,8 +28,8 @@ class Api::ProjectsController < Api::BaseController
 
     render :json => {
       :mode => mode,
-      :started_at_start => started_at_start,
-      :started_at_end => started_at_end,
+      :started_at => started_at,
+      :ended_at => ended_at,
       :departments => @projects.group_by(&:requester_department)
     }
   end
