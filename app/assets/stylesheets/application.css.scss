@@ -67,11 +67,10 @@ div.user-list {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 
-  .form-group {
-    &:first-child {
-      margin-top: 15px;
-    }
-  }
+  .panel-body {
+     padding-top: 30px;
+     padding-bottom: 30px;
+   }
 }
 
 footer {

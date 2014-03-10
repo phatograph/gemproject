@@ -7,13 +7,17 @@ class Api::ProjectsController < Api::BaseController
     started_at = begin
       DateTime.strptime params[:started_at], '%s'
     rescue
-      DateTime.now.beginning_of_week
+      DateTime.now.beginning_of_month
     end
 
     ended_at = begin
       DateTime.strptime params[:ended_at], '%s'
     rescue
-      DateTime.now.end_of_week
+      DateTime.now.end_of_day
+    end
+
+    if ended_at < started_at
+      ended_at = started_at.end_of_day
     end
 
     range = [started_at..ended_at]

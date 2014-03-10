@@ -20,11 +20,21 @@ angular.module('app.controllers').controller 'ReportIndexCtrl', [
 
     $scope.setMode = (mode) ->
       $scope.mode = mode
-      $scope.setTime()
+      $scope.setTime new Date($scope.startedAt), new Date($scope.endedAt)
 
     $scope.setTime = (start, end) ->
       $location.search
         mode: $scope.mode
         startedAt: if start? then +(start / 1000) else ''
         endedAt: if end? then +(end / 1000) else ''
+
+    $scope.filterDepartments = (departments) ->
+      result = {}
+
+      for department, projects of departments
+        rDept = new RegExp $scope.searchDepartment, 'i'
+        if department.match rDept
+          result[department] = projects
+
+      result
 ]
