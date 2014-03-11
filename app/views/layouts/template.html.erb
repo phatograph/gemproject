@@ -4,4 +4,9 @@
   <span ng-bind="flash.message"></span>
 </div>
 
+<ul class="g-main-nav nav nav-tabs nav-justified" ng-controller="MainNavCtrl">
+  <li ng-class="{ active: currentController == 'UserIndexCtrl' }"><a ng-href="{{ path('UserIndexCtrl') }}">Users & Projects</a></li>
+  <li ng-class="{ active: currentController == 'ReportIndexCtrl' }"><a ng-href="{{ path('ReportIndexCtrl') }}">Projects by Departments</a></li>
+</ul>
+
 <%= yield %>

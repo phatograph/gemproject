@@ -32,17 +32,15 @@
       <div class="container">
       <% [:notice, :error, :success, :info, :alert].each do |key| %>
         <% if flash[key].present? %>
-        <div class="alert alert-<%= key %>">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= flash[key] %>
-      </div>
-    <% end %>
+          <div class="alert alert-<%= key %>">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= flash[key] %>
+        </div>
+      <% end %>
     <% end %>
     </div>
     <div class="container">
-      <div>
-        <%= yield(:static) %>
-      </div>
+      <%= yield(:static) %>
     </div>
   <% else %>
     <div class="container">
